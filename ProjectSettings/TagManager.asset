@@ -19,7 +19,7 @@ TagManager:
   - PlayerShots
   - EnemyShots
   - Picking
-  - 
+  - Terrain
   - 
   - 
   - 
@@ -41,11 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Minions
-    uniqueID: 1177259495
+  - name: Terrain
+    uniqueID: 659176593
     locked: 0
   - name: Player
     uniqueID: 1153896011
+    locked: 0
+  - name: Minions
+    uniqueID: 1177259495
     locked: 0
   - name: Enemies
     uniqueID: 2209218765
