@@ -23,7 +23,7 @@ namespace MightyPirates
 
         private void Awake()
         {
-            m_IsEnemy = CompareTag("Enemy");
+            m_IsEnemy = ((1 << gameObject.layer) & Layers.EnemyMask) != 0;
             m_Radius = GetRadius(transform);
         }
 

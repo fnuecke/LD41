@@ -43,7 +43,8 @@ public sealed class Player : MonoBehaviour
     private void HandleRotation()
     {
         Vector2 mousePosition = Input.mousePosition;
-        Vector2 lookVector = mousePosition - new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        Vector2 playerPosition = m_Camera.WorldToScreenPoint(transform.position);
+        Vector2 lookVector = mousePosition - playerPosition;
         m_Movement.SetLookVector(lookVector);
     }
 
