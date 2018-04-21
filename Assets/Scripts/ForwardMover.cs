@@ -2,14 +2,23 @@
 
 namespace MightyPirates
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public sealed class ForwardMover : MonoBehaviour
     {
         [SerializeField]
         private float m_Speed = 1;
 
-        private void Update()
+        private Rigidbody2D m_Body;
+
+        private void Awake()
         {
-            transform.position += transform.up * m_Speed;
+            if (m_Body == null)
+                m_Body = GetComponent<Rigidbody2D>();
+        }
+
+        private void OnEnable()
+        {
+            m_Body.velocity = transform.up * m_Speed;
         }
     }
 }
