@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace MightyPirates
 {
@@ -28,8 +29,15 @@ namespace MightyPirates
 
             for (int i = 0; i < 5; i++)
             {
-                Vector2 position = Random.insideUnitCircle * m_Radius;
-                m_Path.Add(position);
+                for (int j = 0; j < 10; j++)
+                {
+                    Vector2 position = (Vector2) transform.position + Random.insideUnitCircle * m_Radius;
+                    Tilemap tilemap = TileTerrain.Instance.Tilemap;
+                    if (tilemap.GetColliderType(position.ToVector3Int()) != Tile.ColliderType.None)
+                        continue;
+                    m_Path.Add(position);
+                    break;
+                }
             }
             m_PathIndex = 0;
         }
