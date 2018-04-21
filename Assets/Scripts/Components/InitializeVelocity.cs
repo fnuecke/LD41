@@ -4,7 +4,7 @@ namespace MightyPirates
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Rigidbody2D))]
-    public sealed class ForwardMover : MonoBehaviour
+    public sealed class InitializeVelocity : MonoBehaviour
     {
         [SerializeField]
         private float m_Speed = 1;

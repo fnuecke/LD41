@@ -38,12 +38,12 @@ public sealed class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        m_Movement.Acceleration = new Vector2(Input.GetAxis(m_HorizontalInputAxis), Input.GetAxis(m_VerticalInputAxis));
+        m_Movement.AddAcceleration(new Vector2(Input.GetAxis(m_HorizontalInputAxis), Input.GetAxis(m_VerticalInputAxis)));
     }
 
     private void HandleRotation()
     {
-        m_Movement.LookAt = m_Camera.ScreenToWorldPoint(Input.mousePosition);
+        m_Movement.AddLookAt(m_Camera.ScreenToWorldPoint(Input.mousePosition));
     }
 
     private void HandleShooting()

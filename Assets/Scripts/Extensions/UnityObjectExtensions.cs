@@ -27,5 +27,13 @@ namespace MightyPirates
         {
             component.gameObject.Free();
         }
+
+        public static float GetRadius(this GameObject gameObject)
+        {
+            CircleCollider2D circleCollider = gameObject.GetComponent<CircleCollider2D>();
+            if (circleCollider != null)
+                return circleCollider.radius;
+            return 1f;
+        }
     }
 }

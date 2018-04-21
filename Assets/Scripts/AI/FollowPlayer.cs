@@ -32,7 +32,7 @@ namespace MightyPirates
             float distance = toPlayer.magnitude;
             Vector2 acceleration = toPlayer.normalized * (distance - m_Distance);
 
-            m_Movement.Acceleration = acceleration;
+            m_Movement.AddAcceleration(acceleration);
         }
     }
 }

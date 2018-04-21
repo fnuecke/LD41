@@ -22,8 +22,12 @@ GameObject:
   - component: {fileID: 50582707578354514}
   - component: {fileID: 58426702024869436}
   - component: {fileID: 114627473349850236}
-  - component: {fileID: 114943605431104956}
   - component: {fileID: 114338292799050892}
+  - component: {fileID: 114884315304571076}
+  - component: {fileID: 114521057467958926}
+  - component: {fileID: 114978459799754324}
+  - component: {fileID: 114487563142064204}
+  - component: {fileID: 114039284967338600}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -139,6 +143,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114039284967338600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b6921ec70ea4221b70032430a92e266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weapon: {fileID: 114302275658173478}
 --- !u!114 &114302275658173478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Prefab: {fileID: 1051116037681942, guid: caad58d18dce5094098ee93cd2b55130, type: 2}
-  m_Frequency: 0.1
-  m_Range: 16
+  m_Frequency: 0.2
+  m_Range: 12
 --- !u!114 &114338292799050892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +181,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 20
+--- !u!114 &114487563142064204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1666b5a95964b16a8e498493f926a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Movement: {fileID: 114627473349850236}
+--- !u!114 &114521057467958926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7447b53a037646e4a763cd81f4d1bce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ScanRadius: 16
+  m_ScanInterval: 0.2
 --- !u!114 &114627473349850236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,7 +220,7 @@ MonoBehaviour:
   m_Body: {fileID: 50582707578354514}
   m_MoveSpeed: 10
   m_TurnSpeed: 5
---- !u!114 &114943605431104956
+--- !u!114 &114884315304571076
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -187,12 +228,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1178098497014188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19aa95923adc4f68818249e4bc0f182f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cb13f024cf24546a03d813c8ee96c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ScanRadius: 8
+--- !u!114 &114978459799754324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40a6d59ae4e46918021e9cbd2cc599b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Movement: {fileID: 114627473349850236}
-  m_Weapon: {fileID: 114302275658173478}
+  m_TargetDistance: 10
 --- !u!212 &212152922311555914
 SpriteRenderer:
   m_ObjectHideFlags: 1
