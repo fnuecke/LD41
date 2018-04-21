@@ -20,6 +20,10 @@ namespace MightyPirates
         private Vector2 m_LookAtAcc;
         private int m_LookAtCount;
 
+#if DEBUG
+        private Vector2 m_LastAcceleration;
+#endif
+
         public void AddAcceleration(Vector2 value)
         {
             m_AccelerationAcc += value;
@@ -44,10 +48,21 @@ namespace MightyPirates
             HandleRotation();
         }
 
+#if DEBUG
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(transform.position, m_LastAcceleration);
+        }
+#endif
+
         private void HandleMovement()
         {
             if (m_AccelerationCount == 0) return;
             Vector2 acceleration = m_AccelerationAcc / m_AccelerationCount;
+#if DEBUG
+            m_LastAcceleration = acceleration;
+#endif
             m_AccelerationAcc = Vector2.zero;
             m_AccelerationCount = 0;
 
