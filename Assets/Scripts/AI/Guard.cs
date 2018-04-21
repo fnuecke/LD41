@@ -3,7 +3,7 @@
 namespace MightyPirates
 {
     [DisallowMultipleComponent]
-    public sealed class Guard : MonoBehaviour, ISpawnListener
+    public sealed class Guard : TargetTrackingBehaviour, ISpawnListener
     {
         public enum TargetType
         {
@@ -16,6 +16,9 @@ namespace MightyPirates
 
         [SerializeField]
         private float m_Distance = 2;
+
+        [SerializeField]
+        private float m_MaxDistance = 12;
 
         [SerializeField]
         private TargetType m_TargetType;
@@ -56,12 +59,15 @@ namespace MightyPirates
                 return;
             }
 
-            Vector2 playerPosition = m_Target.Value.transform.position;
+            Vector2 targetPosition = m_Target.Value.transform.position;
             Vector2 myPosition = transform.position;
-            Vector2 toPlayer = playerPosition - myPosition;
+            Vector2 toTarget = targetPosition - myPosition;
 
-            float distance = toPlayer.magnitude;
-            Vector2 acceleration = toPlayer.normalized * (distance - m_Distance);
+            float distance = toTarget.magnitude;
+            if (m_TargetTracker.Target != null && distance + Vector2.Distance(m_TargetTracker.Target.transform.position, myPosition) > m_MaxDistance * 2)
+                m_TargetTracker.Target = null;
+
+            Vector2 acceleration = toTarget.normalized * (distance - m_Distance);
 
             m_Movement.AddAcceleration(acceleration);
         }

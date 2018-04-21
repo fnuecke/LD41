@@ -310,6 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Movement: {fileID: 114627473349850236}
   m_Distance: 2
+  m_MaxDistance: 12
   m_TargetType: 1
 --- !u!114 &114884315304571076
 MonoBehaviour:

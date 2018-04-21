@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Movement: {fileID: 114533350491955406}
   m_Weapon: {fileID: 114609165295105210}
+  m_DodgeStrength: 500
   m_HorizontalInputAxis: Horizontal
   m_VerticalInputAxis: Vertical
   m_DodgeInputButton: Dodge
