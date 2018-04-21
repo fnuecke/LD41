@@ -85,8 +85,9 @@ namespace MightyPirates
             int spawnCount = Mathf.Min(Random.Range(m_SpawnMin, m_SpawnMax + 1), m_MaxAlive - liveCount);
             for (int i = 0; i < spawnCount; i++)
             {
-                Vector3 relativePosition = Random.insideUnitCircle * m_SpawnRadius;
-                Vector3 position = transform.position + relativePosition;
+                Vector3 position;
+                if (!FindLegalPosition(out position))
+                    continue;
                 GameObject prefab = m_Prefabs[Random.Range(0, m_Prefabs.Length)];
                 GameObject instance = ObjectPool.Get(prefab, position, Quaternion.AngleAxis(Random.value * Mathf.PI * 2, Vector3.forward));
                 instance.GetComponents(m_SpawnListeners);
@@ -97,6 +98,20 @@ namespace MightyPirates
                 m_SpawnListeners.Clear();
                 m_LiveChildren.AddLast(new PooledObjectReference(instance));
             }
+        }
+
+        private bool FindLegalPosition(out Vector3 position)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                Vector3 relativePosition = Random.insideUnitCircle * m_SpawnRadius;
+                position = transform.position + relativePosition;
+                if (TileTerrain.Instance.IsLegalPosition(position))
+                    return true;
+            }
+
+            position = Vector3.zero;
+            return false;
         }
     }
 }

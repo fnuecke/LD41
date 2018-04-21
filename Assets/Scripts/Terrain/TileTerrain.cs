@@ -62,6 +62,12 @@ namespace MightyPirates
 
         public BoundsInt SafeBounds => Tilemap.cellBounds.Expand(new Vector3Int(-m_Margin, -m_Margin, 0));
 
+        public bool IsLegalPosition(Vector3 position)
+        {
+            Vector3Int vector3 = position.ToVector3Int();
+            return SafeBounds.Contains(vector3) && Tilemap.GetColliderType(vector3) == Tile.ColliderType.None;
+        }
+
         private void Awake()
         {
             if (m_Tilemap == null)
