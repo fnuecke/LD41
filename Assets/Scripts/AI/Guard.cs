@@ -20,24 +20,26 @@ namespace MightyPirates
         [SerializeField]
         private TargetType m_TargetType;
 
-        private Transform m_Target;
+        private PooledObjectReference m_Target;
+
+        public GameObject Target => m_Target.Value;
 
         private void OnEnable()
         {
             switch (m_TargetType)
             {
                 case TargetType.Player:
-                    m_Target = GameObject.FindGameObjectWithTag("Player").transform;
+                    m_Target = new PooledObjectReference(GameObject.FindGameObjectWithTag("Player"));
                     break;
             }
         }
 
-        public void HandleSpawned(Spawner spawner)
+        public void HandleSpawned(GameObject spawner)
         {
             switch (m_TargetType)
             {
                 case TargetType.Spawner:
-                    m_Target = spawner.transform;
+                    m_Target = new PooledObjectReference(spawner);
                     break;
             }
         }
@@ -49,7 +51,12 @@ namespace MightyPirates
 
         private void TryMoveTowardsTarget()
         {
-            Vector2 playerPosition = m_Target.position;
+            if (m_Target.Value == null)
+            {
+                return;
+            }
+
+            Vector2 playerPosition = m_Target.Value.transform.position;
             Vector2 myPosition = transform.position;
             Vector2 toPlayer = playerPosition - myPosition;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace MightyPirates
 {
+    [DisallowMultipleComponent]
     public sealed class Avoidance : MonoBehaviour
     {
         [SerializeField]

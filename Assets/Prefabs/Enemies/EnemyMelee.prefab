@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4674831619486464}
   - component: {fileID: 50582707578354514}
   - component: {fileID: 58426702024869436}
+  - component: {fileID: 114675384819925974}
   - component: {fileID: 114627473349850236}
   - component: {fileID: 114338292799050892}
   - component: {fileID: 114884315304571076}
@@ -266,6 +267,17 @@ MonoBehaviour:
   m_Body: {fileID: 50582707578354514}
   m_MoveSpeed: 10
   m_TurnSpeed: 5
+--- !u!114 &114675384819925974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4ed14332734fa292f6a495c229a53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114721135494528626
 MonoBehaviour:
   m_ObjectHideFlags: 1

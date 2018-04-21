@@ -2,7 +2,6 @@
 
 namespace MightyPirates
 {
-    [DisallowMultipleComponent]
     [RequireComponent(typeof(TargetTracker))]
     public abstract class TargetTrackingBehaviour : MonoBehaviour
     {

@@ -92,7 +92,7 @@ namespace MightyPirates
                 instance.GetComponents(m_SpawnListeners);
                 foreach (ISpawnListener listener in m_SpawnListeners)
                 {
-                    listener.HandleSpawned(this);
+                    listener.HandleSpawned(GetComponentInParent<Entity>().gameObject);
                 }
                 m_SpawnListeners.Clear();
                 m_LiveChildren.AddLast(new PooledObjectReference(instance));

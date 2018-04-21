@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4796549621536746}
   - component: {fileID: 50797784299300402}
   - component: {fileID: 58738391395401436}
+  - component: {fileID: 114518158370660546}
   - component: {fileID: 114677730453914824}
   - component: {fileID: 114725495455467984}
   - component: {fileID: 114865521141357000}
@@ -46,6 +47,7 @@ GameObject:
   - component: {fileID: 114579362831293808}
   - component: {fileID: 114082084096846980}
   - component: {fileID: 114367540091139932}
+  - component: {fileID: 114390493616345384}
   m_Layer: 9
   m_Name: MinionMelee
   m_TagString: Untagged
@@ -197,6 +199,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c542d63a25b942dea64f0f34bff17d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114390493616345384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368403752600402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2817f3c80c554511b399b0dd1e178977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114518158370660546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368403752600402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4ed14332734fa292f6a495c229a53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114558110874620372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,7 +293,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368403752600402}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7447b53a037646e4a763cd81f4d1bce7, type: 3}
   m_Name: 

@@ -62,8 +62,11 @@ public sealed class Player : MonoBehaviour
         if (target == null)
             return;
 
-        Health health = target.GetComponentInParent<Health>();
-        if (health == null)
+        Entity entity = target.GetComponentInParent<Entity>();
+        if (entity == null)
+            return;
+
+        if (entity.GetComponent<Health>() == null)
             return;
 
         foreach (Minion minion in Minion.All)
@@ -72,7 +75,7 @@ public sealed class Player : MonoBehaviour
             if (targetTracker == null)
                 continue;
 
-            targetTracker.Target = health.gameObject;
+            targetTracker.Target = entity.gameObject;
         }
     }
 }

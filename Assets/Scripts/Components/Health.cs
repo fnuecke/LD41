@@ -14,41 +14,47 @@ namespace MightyPirates
 
         public int CurrentHealth => m_CurrentHealth;
 
-        public event Action DamageTaken;
-        public event Action Died;
+        public event Action<GameObject> DamageTaken;
+        public event Action<GameObject> Died;
 
         private void OnEnable()
         {
             m_CurrentHealth = m_MaxHealth;
         }
 
-        public void ApplyDamage(int amount)
+        private void OnDisable()
+        {
+            DamageTaken = null;
+            Died = null;
+        }
+
+        public void ApplyDamage(GameObject source, int amount)
         {
             m_CurrentHealth -= amount;
             if (m_CurrentHealth <= 0)
             {
-                OnDeath();
+                OnDeath(source);
             }
             else
             {
-                OnDamageTaken();
+                OnDamageTaken(source);
             }
         }
 
-        private void OnDeath()
+        private void OnDeath(GameObject source)
         {
-            OnDied();
+            OnDied(source);
             this.FreeGameObject();
         }
 
-        private void OnDamageTaken()
+        private void OnDamageTaken(GameObject source)
         {
-            DamageTaken?.Invoke();
+            DamageTaken?.Invoke(source);
         }
 
-        private void OnDied()
+        private void OnDied(GameObject source)
         {
-            Died?.Invoke();
+            Died?.Invoke(source);
         }
     }
 }

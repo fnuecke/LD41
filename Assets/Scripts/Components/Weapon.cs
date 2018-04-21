@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace MightyPirates
 {
@@ -14,6 +15,7 @@ namespace MightyPirates
         private float m_Range;
 
         private float m_TimeLastAttacked;
+        private readonly List<ISpawnListener> m_SpawnListeners = new List<ISpawnListener>();
 
         public float Range => m_Range;
 
@@ -22,7 +24,13 @@ namespace MightyPirates
             if (Time.time - m_TimeLastAttacked < m_Frequency) return;
 
             m_TimeLastAttacked = Time.time;
-            ObjectPool.Get(m_Prefab, transform.position, transform.rotation);
+            GameObject attack = ObjectPool.Get(m_Prefab, transform.position, transform.rotation);
+            attack.GetComponents(m_SpawnListeners);
+            foreach (ISpawnListener listener in m_SpawnListeners)
+            {
+                listener.HandleSpawned(GetComponentInParent<Entity>().gameObject);
+            }
+            m_SpawnListeners.Clear();
         }
     }
 }
