@@ -15,18 +15,8 @@ namespace MightyPirates
         [SerializeField]
         private float m_TurnSpeed = 5f;
 
-        private Vector2 m_Acceleration;
-        private Vector2 m_LookVector;
-
-        public void SetAcceleration(Vector2 acceleration)
-        {
-            m_Acceleration = acceleration;
-        }
-
-        public void SetLookVector(Vector2 value)
-        {
-            m_LookVector = value;
-        }
+        public Vector2 Acceleration { get; set; }
+        public Vector3 LookAt { get; set; }
 
         private void Awake()
         {
@@ -42,7 +32,7 @@ namespace MightyPirates
 
         private void HandleMovement()
         {
-            Vector2 acceleration = m_Acceleration;
+            Vector2 acceleration = Acceleration;
 
             float accelerationMagnitude = acceleration.magnitude;
             if (Mathf.Approximately(accelerationMagnitude, 0f)) return;
@@ -53,7 +43,8 @@ namespace MightyPirates
 
         private void HandleRotation()
         {
-            float targetAngle = Mathf.Atan2(m_LookVector.y, m_LookVector.x) * Mathf.Rad2Deg;
+            Vector2 toTarget = LookAt - transform.position;
+            float targetAngle = Mathf.Atan2(toTarget.y, toTarget.x) * Mathf.Rad2Deg;
             float currentAngle = m_Body.rotation;
             float rotation = Mathf.DeltaAngle(currentAngle, targetAngle);
             if (rotation < -m_TurnSpeed) rotation = -m_TurnSpeed;

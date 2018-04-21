@@ -37,6 +37,7 @@ namespace MightyPirates
 
             if (m_Target == null)
             {
+                m_Movement.Acceleration = Vector2.zero;
                 return;
             }
 
@@ -93,11 +94,7 @@ namespace MightyPirates
 
         private void TryRotateTowardsTarget()
         {
-            Vector2 targetPosition = m_Target.position;
-            Vector2 myPosition = transform.position;
-            Vector2 toTarget = targetPosition - myPosition;
-
-            m_Movement.SetLookVector(toTarget);
+            m_Movement.LookAt = m_Target.position;
         }
 
         private void TryMoveTowardsTarget()
@@ -111,7 +108,7 @@ namespace MightyPirates
 
             Vector2 acceleration = toTarget * (desiredDistance / distance);
 
-            m_Movement.SetAcceleration(acceleration);
+            m_Movement.Acceleration = acceleration;
         }
 
         private void TryAttackTarget()
