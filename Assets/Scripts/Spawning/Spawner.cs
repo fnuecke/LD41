@@ -7,7 +7,7 @@ namespace MightyPirates
     public sealed class Spawner : MonoBehaviour
     {
         [SerializeField]
-        private GameObject m_Prefab;
+        private GameObject[] m_Prefabs;
 
         [SerializeField]
         private float m_SpawnInterval = 10;
@@ -59,7 +59,7 @@ namespace MightyPirates
 
         private void SpawnNow()
         {
-            if (m_Prefab == null)
+            if (m_Prefabs == null || m_Prefabs.Length == 0)
             {
                 return;
             }
@@ -87,7 +87,8 @@ namespace MightyPirates
             {
                 Vector3 relativePosition = Random.insideUnitCircle * m_SpawnRadius;
                 Vector3 position = transform.position + relativePosition;
-                GameObject instance = ObjectPool.Get(m_Prefab, position, Quaternion.AngleAxis(Random.value * Mathf.PI * 2, Vector3.forward));
+                GameObject prefab = m_Prefabs[Random.Range(0, m_Prefabs.Length)];
+                GameObject instance = ObjectPool.Get(prefab, position, Quaternion.AngleAxis(Random.value * Mathf.PI * 2, Vector3.forward));
                 instance.GetComponents(m_SpawnListeners);
                 foreach (ISpawnListener listener in m_SpawnListeners)
                 {
