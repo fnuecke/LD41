@@ -30,6 +30,11 @@ namespace MightyPirates
             m_AccelerationCount++;
         }
 
+        public void AddImpulse(Vector2 direction)
+        {
+            m_Body.AddForce(direction, ForceMode2D.Impulse);
+        }
+
         public void AddLookAt(Vector2 value)
         {
             m_LookAtAcc += value;

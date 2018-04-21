@@ -192,11 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116035f88f40e9e459ab4bc4396d9333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
   m_Movement: {fileID: 114533350491955406}
   m_Weapon: {fileID: 114609165295105210}
   m_HorizontalInputAxis: Horizontal
   m_VerticalInputAxis: Vertical
+  m_DodgeInputButton: Dodge
   m_FireInputButton: Fire1
 --- !u!114 &114533350491955406
 MonoBehaviour:

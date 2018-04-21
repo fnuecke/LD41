@@ -9,6 +9,9 @@ public sealed class Player : MonoBehaviour
 
     [SerializeField]
     private Weapon m_Weapon;
+    
+    [SerializeField]
+    private float m_DodgeStrength = 5;
 
     [Header("Input")]
     [SerializeField]
@@ -18,6 +21,9 @@ public sealed class Player : MonoBehaviour
     private string m_VerticalInputAxis = "Vertical";
 
     [SerializeField]
+    private string m_DodgeInputButton = "Dodge";
+
+    [SerializeField]
     private string m_FireInputButton = "Fire1";
 
     private Camera m_Camera;
@@ -25,6 +31,7 @@ public sealed class Player : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+        HandleDodging(); // D:
         HandleRotation();
         HandleShooting();
         HandleCommands();
@@ -33,6 +40,12 @@ public sealed class Player : MonoBehaviour
     private void HandleMovement()
     {
         m_Movement.AddAcceleration(new Vector2(Input.GetAxis(m_HorizontalInputAxis), Input.GetAxis(m_VerticalInputAxis)));
+    }
+
+    private void HandleDodging()
+    {
+        if (!Input.GetButtonDown(m_DodgeInputButton)) return;
+        m_Movement.AddImpulse(new Vector2(Input.GetAxis(m_HorizontalInputAxis), Input.GetAxis(m_VerticalInputAxis)).normalized * m_DodgeStrength);
     }
 
     private void HandleRotation()

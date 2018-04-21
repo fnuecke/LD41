@@ -27,7 +27,7 @@ namespace MightyPirates
         [SerializeField]
         private int m_EnemyBaseCount;
 
-        private List<PooledObjectReference> m_GeneratedObjects = new List<PooledObjectReference>();
+        private readonly List<PooledObjectReference> m_GeneratedObjects = new List<PooledObjectReference>();
 
         private void Start()
         {
