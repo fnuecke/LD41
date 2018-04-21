@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MightyPirates;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public sealed class Player : MonoBehaviour
@@ -10,13 +11,26 @@ public sealed class Player : MonoBehaviour
     private Rigidbody2D m_Body;
 
     [SerializeField]
+    private float m_AccelerationPower = 5f;
+
+    [Header("Attack")]
+    [SerializeField]
+    private ObjectPool m_BulletPool;
+
+    [SerializeField]
+    private float m_ShotFrequency = 0.1f;
+
+    private float m_TimeLastShotFired;
+
+    [Header("Input")]
+    [SerializeField]
     private string m_HorizontalInputAxis = "Horizontal";
 
     [SerializeField]
     private string m_VerticalInputAxis = "Vertical";
 
     [SerializeField]
-    private float m_AccelerationPower = 5f;
+    private string m_FireInputButton = "Fire1";
 
     private void Awake()
     {
@@ -27,6 +41,12 @@ public sealed class Player : MonoBehaviour
     }
 
     private void Update()
+    {
+        HandleMovement();
+        HandleShooting();
+    }
+
+    private void HandleMovement()
     {
         float horizontal = Input.GetAxis(m_HorizontalInputAxis);
         float vertical = Input.GetAxis(m_VerticalInputAxis);
@@ -39,5 +59,14 @@ public sealed class Player : MonoBehaviour
         acceleration *= m_AccelerationPower;
 
         m_Body.AddForce(acceleration, ForceMode2D.Force);
+    }
+
+    private void HandleShooting()
+    {
+        if (!Input.GetButton(m_FireInputButton)) return;
+        if (Time.time - m_TimeLastShotFired < m_ShotFrequency) return;
+
+        m_TimeLastShotFired = Time.time;
+        m_BulletPool.Get(transform.position, transform.rotation);
     }
 }

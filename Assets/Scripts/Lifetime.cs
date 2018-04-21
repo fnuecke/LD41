@@ -11,12 +11,12 @@ namespace MightyPirates
 
         private void Awake()
         {
-            m_TimeCreated = Time.timeSinceLevelLoad;
+            m_TimeCreated = Time.time;
         }
 
         private void Update()
         {
-            if (Time.timeSinceLevelLoad - m_TimeCreated > m_Lifetime)
+            if (Time.time - m_TimeCreated > m_Lifetime)
             {
                 this.FreeGameObject();
             }

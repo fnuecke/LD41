@@ -10,7 +10,7 @@ namespace MightyPirates
         private int m_Damage;
 
         [SerializeField]
-        private bool m_Once;
+        private bool m_Once = true;
 
         public event Action AppliedDamage;
 
