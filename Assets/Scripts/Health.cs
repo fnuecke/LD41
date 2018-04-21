@@ -16,7 +16,7 @@ namespace MightyPirates
         public event Action DamageTaken;
         public event Action Died;
 
-        private void Awake()
+        private void OnEnable()
         {
             m_CurrentHealth = m_MaxHealth;
         }

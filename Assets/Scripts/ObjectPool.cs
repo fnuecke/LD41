@@ -18,12 +18,14 @@ namespace MightyPirates
             {
                 GameObject instance = Instantiate(m_Prefab, position, rotation, parent);
                 instance.GetOrAddComponent<PooledObject>().Pool = this;
+                instance.SetActive(true);
                 return instance;
             }
 
             Transform child = transform.GetChild(transform.childCount - 1);
             child.SetParent(parent, false);
             child.SetPositionAndRotation(position, rotation);
+            child.gameObject.SetActive(true);
             return child.gameObject;
         }
 
@@ -32,6 +34,7 @@ namespace MightyPirates
 #if DEBUG
             Debug.Assert(instance.GetComponent<PooledObject>()?.Pool == this);
 #endif
+            instance.SetActive(false);
             instance.transform.SetParent(transform);
         }
     }

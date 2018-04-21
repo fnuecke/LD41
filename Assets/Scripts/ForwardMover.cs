@@ -9,7 +9,7 @@ namespace MightyPirates
 
         private void Update()
         {
-            transform.position += transform.forward * m_Speed;
+            transform.position += transform.up * m_Speed;
         }
     }
 }

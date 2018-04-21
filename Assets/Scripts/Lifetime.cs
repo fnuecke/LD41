@@ -9,7 +9,7 @@ namespace MightyPirates
 
         private float m_TimeCreated;
 
-        private void Awake()
+        private void OnEnable()
         {
             m_TimeCreated = Time.time;
         }
