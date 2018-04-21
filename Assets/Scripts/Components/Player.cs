@@ -5,9 +5,6 @@ using UnityEngine;
 public sealed class Player : MonoBehaviour
 {
     [SerializeField]
-    private Camera m_Camera;
-
-    [SerializeField]
     private Movement m_Movement;
 
     [SerializeField]
@@ -23,11 +20,7 @@ public sealed class Player : MonoBehaviour
     [SerializeField]
     private string m_FireInputButton = "Fire1";
 
-    private void Awake()
-    {
-        if (m_Camera == null)
-            m_Camera = GetComponent<Camera>();
-    }
+    private Camera m_Camera;
 
     private void Update()
     {
@@ -44,18 +37,24 @@ public sealed class Player : MonoBehaviour
 
     private void HandleRotation()
     {
+        if (m_Camera == null)
+            m_Camera = Camera.main;
         m_Movement.AddLookAt(m_Camera.ScreenToWorldPoint(Input.mousePosition));
     }
 
     private void HandleShooting()
     {
-        if (!Input.GetButton(m_FireInputButton)) return;
+        if (!Input.GetButton(m_FireInputButton))
+            return;
         m_Weapon.TryShoot();
     }
 
     private void HandleCommands()
     {
-        if (!Input.GetMouseButtonDown(1)) return;
+        if (!Input.GetMouseButtonDown(1))
+            return;
+        if (m_Camera == null)
+            m_Camera = Camera.main;
 
         Vector3 worldPosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
         Collider2D target = Physics2D.OverlapPoint(worldPosition, Layers.PickingMask);

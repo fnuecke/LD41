@@ -60,6 +60,8 @@ namespace MightyPirates
         public Tilemap Tilemap => m_Tilemap;
 #endif
 
+        public BoundsInt SafeBounds => Tilemap.cellBounds.Expand(new Vector3Int(-m_Margin, -m_Margin, 0));
+
         private void Awake()
         {
             if (m_Tilemap == null)
