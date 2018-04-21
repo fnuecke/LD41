@@ -42,11 +42,23 @@ namespace MightyPirates
         private float m_Isolevel = 0.1f;
 
         [SerializeField]
-        private float m_Margin = 10f;
+        private int m_Margin = 10;
 
         private Tilemap m_Tilemap;
 
+#if UNITY_EDITOR
+        public Tilemap Tilemap
+        {
+            get
+            {
+                if (m_Tilemap == null)
+                    m_Tilemap = GetComponent<Tilemap>();
+                return m_Tilemap;
+            }
+        }
+#else
         public Tilemap Tilemap => m_Tilemap;
+#endif
 
         private void Awake()
         {
@@ -70,15 +82,10 @@ namespace MightyPirates
         }
 
         [ContextMenu("Generate")]
-        private void GenerateTerrain()
+        public void GenerateTerrain()
         {
-#if UNITY_EDITOR
-            if (m_Tilemap == null)
-                m_Tilemap = GetComponent<Tilemap>();
-#endif
-
-            m_Tilemap.ClearAllTiles();
-            m_Tilemap.BoxFill(new Vector3Int(m_Width - 1, m_Height - 1, 0), m_Rock[0], 0, 0, m_Width - 1, m_Height - 1);
+            Tilemap.ClearAllTiles();
+            Tilemap.BoxFill(new Vector3Int(m_Width - 1, m_Height - 1, 0), m_Rock[0], 0, 0, m_Width - 1, m_Height - 1);
 
             long seed = m_Seed != 0 ? m_Seed : (long) (Random.value * int.MaxValue);
             FractalNoise noise = new FractalNoise(new OpenSimplexNoise(seed));
@@ -89,15 +96,15 @@ namespace MightyPirates
 
             for (int x = 0; x < m_Width; x++)
             {
-                float xMarginContribution = Mathf.Clamp01(Mathf.Max(m_Margin - x, m_Margin - (m_Width - x)) / m_Margin);
+                float xMarginContribution = Mathf.Clamp01(Mathf.Max(m_Margin - x, m_Margin - (m_Width - x)) / (float) m_Margin);
                 for (int y = 0; y < m_Height; y++)
                 {
-                    float yMarginContribution = Mathf.Clamp01(Mathf.Max(m_Margin - y, m_Margin - (m_Height - y)) / m_Margin);
+                    float yMarginContribution = Mathf.Clamp01(Mathf.Max(m_Margin - y, m_Margin - (m_Height - y)) / (float) m_Margin);
                     float marginContribution = Mathf.Max(xMarginContribution, yMarginContribution);
 
                     if (noise.Evaluate(x, y) - marginContribution > m_Isolevel)
                     {
-                        m_Tilemap.SetTile(new Vector3Int(x, y, 0), m_Open[0]);
+                        Tilemap.SetTile(new Vector3Int(x, y, 0), m_Open[0]);
                     }
                 }
             }
