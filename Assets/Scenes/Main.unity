@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29588bfc41a4d7c9d60943d99b54e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Pool: {fileID: 11400000, guid: 4d7b588ba24570a4598c37f350238790, type: 2}
+  m_Prefab: {fileID: 1178098497014188, guid: ce80a467c008cbd4da56d777bc3452fa, type: 2}
   m_SpawnInterval: 5
   m_SpawnMin: 1
   m_SpawnMax: 3
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29588bfc41a4d7c9d60943d99b54e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Pool: {fileID: 11400000, guid: ed414b4e43dd5cd428622a33f8bb67a3, type: 2}
+  m_Prefab: {fileID: 1368403752600402, guid: 0b325f2735c6cdc4d936182ca9a81141, type: 2}
   m_SpawnInterval: 5
   m_SpawnMin: 1
   m_SpawnMax: 3

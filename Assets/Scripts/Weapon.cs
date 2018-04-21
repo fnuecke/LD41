@@ -5,7 +5,7 @@ namespace MightyPirates
     public sealed class Weapon : MonoBehaviour
     {
         [SerializeField]
-        private ObjectPool m_AttackPool;
+        private GameObject m_Prefab;
 
         [SerializeField]
         private float m_Frequency = 0.1f;
@@ -22,7 +22,7 @@ namespace MightyPirates
             if (Time.time - m_TimeLastAttacked < m_Frequency) return;
 
             m_TimeLastAttacked = Time.time;
-            m_AttackPool.Get(transform.position, transform.rotation);
+            ObjectPool.Get(m_Prefab, transform.position, transform.rotation);
         }
     }
 }

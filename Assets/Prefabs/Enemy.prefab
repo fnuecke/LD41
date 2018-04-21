@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bac8e45b4a4727b608aef14c41914f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AttackPool: {fileID: 11400000, guid: 4e3e1607e0c18ee4cb88e2270570b6b2, type: 2}
+  m_Prefab: {fileID: 1051116037681942, guid: caad58d18dce5094098ee93cd2b55130, type: 2}
   m_Frequency: 0.1
   m_Range: 16
 --- !u!114 &114338292799050892
