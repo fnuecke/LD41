@@ -30,6 +30,11 @@ namespace MightyPirates
 
         private void Update()
         {
+            if (m_Target != null && !m_Target.gameObject.activeSelf)
+            {
+                m_Target = null; // Returned to pool.
+            }
+
             if (m_ScanRadius > 0 && m_Target == null)
             {
                 SetTarget(ScanForTarget());

@@ -36,6 +36,12 @@ namespace MightyPirates
             }
         }
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, m_SpawnRadius);
+        }
+
         private IEnumerator SpawnPeriodically()
         {
             for (;;)
