@@ -49,11 +49,13 @@ namespace MightyPirates
 
         public void Free(GameObject instance)
         {
+            PooledObject pooledObject = instance.GetComponent<PooledObject>();
 #if DEBUG
-            Debug.Assert(instance.GetComponent<PooledObject>()?.Pool == this);
+            Debug.Assert(pooledObject.Pool == this);
 #endif
             instance.SetActive(false);
             instance.transform.SetParent(GetPool());
+            pooledObject.Version++;
         }
     }
 }

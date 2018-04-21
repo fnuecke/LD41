@@ -6,6 +6,8 @@ namespace MightyPirates
     {
         public ObjectPool Pool { get; set; }
 
+        public int Version { get; set; }
+
         public void Free()
         {
             Pool.Free(gameObject);

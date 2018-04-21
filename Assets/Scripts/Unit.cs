@@ -17,7 +17,7 @@ namespace MightyPirates
         private bool m_IsEnemy;
         private float m_Radius;
 
-        private Transform m_Target;
+        private PooledObjectReference m_Target;
         private float m_TargetRadius;
 
         private readonly Collider2D[] m_ScanResults = new Collider2D[16];
@@ -25,22 +25,17 @@ namespace MightyPirates
         private void Awake()
         {
             m_IsEnemy = ((1 << gameObject.layer) & Layers.EnemyMask) != 0;
-            m_Radius = GetRadius(transform);
+            m_Radius = GetRadius(gameObject);
         }
 
         private void Update()
         {
-            if (m_Target != null && !m_Target.gameObject.activeSelf)
-            {
-                m_Target = null; // Returned to pool.
-            }
-
-            if (m_ScanRadius > 0 && m_Target == null)
+            if (m_ScanRadius > 0 && m_Target.Value == null)
             {
                 SetTarget(ScanForTarget());
             }
 
-            if (m_Target == null)
+            if (m_Target.Value == null)
             {
                 m_Movement.Acceleration = Vector2.zero;
                 return;
@@ -51,16 +46,16 @@ namespace MightyPirates
             TryAttackTarget();
         }
 
-        public void SetTarget(Transform target)
+        public void SetTarget(GameObject target)
         {
-            m_Target = target;
-            if (m_Target != null)
+            m_Target = new PooledObjectReference(target);
+            if (m_Target.Value != null)
             {
-                m_TargetRadius = GetRadius(m_Target);
+                m_TargetRadius = GetRadius(m_Target.Value);
             }
         }
 
-        private Transform ScanForTarget()
+        private GameObject ScanForTarget()
         {
             int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, m_ScanRadius, m_ScanResults, ScanLayerMask);
             if (hitCount == 0) return null;
@@ -94,17 +89,17 @@ namespace MightyPirates
                 }
             }
 
-            return bestTarget.transform;
+            return bestTarget.gameObject;
         }
 
         private void TryRotateTowardsTarget()
         {
-            m_Movement.LookAt = m_Target.position;
+            m_Movement.LookAt = m_Target.Value.transform.position;
         }
 
         private void TryMoveTowardsTarget()
         {
-            Vector2 targetPosition = m_Target.position;
+            Vector2 targetPosition = m_Target.Value.transform.position;
             Vector2 myPosition = transform.position;
             Vector2 toTarget = targetPosition - myPosition;
 
@@ -118,14 +113,14 @@ namespace MightyPirates
 
         private void TryAttackTarget()
         {
-            float distance = Vector2.Distance(m_Target.position, m_Weapon.transform.position);
+            float distance = Vector2.Distance(m_Target.Value.transform.position, m_Weapon.transform.position);
             if (distance - m_Radius - m_TargetRadius < m_Weapon.Range)
             {
                 m_Weapon.TryShoot();
             }
         }
 
-        private static float GetRadius(Transform thing)
+        private static float GetRadius(GameObject thing)
         {
             CircleCollider2D circleCollider = thing.GetComponent<CircleCollider2D>();
             if (circleCollider != null)
