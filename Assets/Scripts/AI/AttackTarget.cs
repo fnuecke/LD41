@@ -40,6 +40,9 @@ namespace MightyPirates
 
         private void OnDrawGizmos()
         {
+            if (m_Weapon == null)
+                return;
+
             Gizmos.color = Color.yellow;
             Gizmos.DrawRay(m_Weapon.transform.position, m_Weapon.transform.up);
         }
