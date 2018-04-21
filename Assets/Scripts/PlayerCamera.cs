@@ -2,22 +2,10 @@
 
 namespace MightyPirates
 {
-    [RequireComponent(typeof(Camera))]
     public sealed class PlayerCamera : MonoBehaviour
     {
         [SerializeField]
         private Player m_Player;
-
-        private Camera m_Camera;
-        private Movement m_Movement;
-
-        private void Awake()
-        {
-            if (m_Camera == null)
-                m_Camera = GetComponent<Camera>();
-            if (m_Movement == null)
-                m_Movement = m_Player.GetComponent<Movement>();
-        }
 
         private void Update()
         {
