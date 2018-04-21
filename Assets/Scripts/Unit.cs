@@ -106,18 +106,23 @@ namespace MightyPirates
             float distance = toTarget.magnitude;
             float desiredDistance = m_Weapon.Range * 0.8f;
 
-            Vector2 acceleration = toTarget * (desiredDistance / distance);
+            Vector2 acceleration = toTarget.normalized * (distance - desiredDistance);
 
             m_Movement.Acceleration = acceleration;
         }
 
         private void TryAttackTarget()
         {
+            Vector2 toTarget = m_Target.Value.transform.position - m_Weapon.transform.position;
+            float angleDelta = Vector2.Angle(toTarget, m_Weapon.transform.up);
+            if (angleDelta > 30)
+                return;
+
             float distance = Vector2.Distance(m_Target.Value.transform.position, m_Weapon.transform.position);
-            if (distance - m_Radius - m_TargetRadius < m_Weapon.Range)
-            {
-                m_Weapon.TryShoot();
-            }
+            if (distance - m_Radius - m_TargetRadius > m_Weapon.Range)
+                return;
+
+            m_Weapon.TryShoot();
         }
 
         private static float GetRadius(GameObject thing)
@@ -133,6 +138,19 @@ namespace MightyPirates
         private bool IsValidTarget(Transform target)
         {
             return target.GetComponent<Health>() != null;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(m_Weapon.transform.position, m_Weapon.transform.up);
+
+            if (m_Target.Value == null)
+                return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(m_Target.Value.transform.position, m_TargetRadius);
+            Gizmos.DrawLine(m_Weapon.transform.position, m_Target.Value.transform.position);
         }
     }
 }
