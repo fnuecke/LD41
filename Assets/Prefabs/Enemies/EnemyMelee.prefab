@@ -308,8 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6477a6c1744548b181a3d4970277df32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Movement: {fileID: 114627473349850236, guid: ce80a467c008cbd4da56d777bc3452fa,
-    type: 2}
+  m_Movement: {fileID: 114627473349850236}
   m_Distance: 2
   m_TargetType: 1
 --- !u!114 &114884315304571076
