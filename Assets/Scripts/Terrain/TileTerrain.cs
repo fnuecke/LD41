@@ -64,7 +64,7 @@ namespace MightyPirates
 
         public bool IsLegalPosition(Vector3 position)
         {
-            Vector3Int vector3 = position.ToVector3Int();
+            Vector3Int vector3 = position.ToVector3Int(Tilemap.cellSize);
             return SafeBounds.Contains(vector3) && Tilemap.GetColliderType(vector3) == Tile.ColliderType.None;
         }
 

@@ -29,16 +29,32 @@ namespace MightyPirates
 
             for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < 10; j++)
-                {
-                    Vector2 position = (Vector2) transform.position + Random.insideUnitCircle * m_Radius;
-                    Tilemap tilemap = TileTerrain.Instance.Tilemap;
-                    if (tilemap.GetColliderType(position.ToVector3Int()) != Tile.ColliderType.None)
-                        continue;
-                    m_Path.Add(position);
-                    break;
-                }
+                Vector3 position;
+                if (!FindLegalPosition(out position))
+                    continue;
+                m_Path.Add(position);
             }
+
+            int keyCount = m_Path.Count;
+            if (keyCount > 1)
+            {
+                Tilemap tilemap = TileTerrain.Instance.Tilemap;
+                Vector3 cellSize = tilemap.cellSize;
+                for (int i = keyCount - 1; i > 0; i--)
+                {
+                    foreach (Vector2Int step in Pathfinding.FindPath(tilemap, m_Path[i - 1].ToVector2Int(cellSize), m_Path[i].ToVector2Int(cellSize)))
+                    {
+                        m_Path.Add(step.ToVector2(cellSize));
+                    }
+                    m_Path.RemoveAt(m_Path.Count - 1);
+                }
+                foreach (Vector2Int step in Pathfinding.FindPath(tilemap, m_Path[keyCount - 1].ToVector2Int(cellSize), m_Path[0].ToVector2Int(cellSize)))
+                {
+                    m_Path.Add(step.ToVector2(cellSize));
+                }
+                m_Path.RemoveRange(0, keyCount);
+            }
+
             m_PathIndex = 0;
         }
 
@@ -75,6 +91,19 @@ namespace MightyPirates
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, m_Radius);
+        }
+
+        private bool FindLegalPosition(out Vector3 position)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                position = (Vector2) transform.position + Random.insideUnitCircle * m_Radius;
+                if (TileTerrain.Instance.IsLegalPosition(position))
+                    return true;
+            }
+
+            position = Vector3.zero;
+            return false;
         }
     }
 }

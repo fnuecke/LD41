@@ -82,14 +82,15 @@ namespace MightyPirates
                 break;
             }
 
-            m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(m_PlayerPrefab, playerPosition.ToVector3(m_PlayerPrefab.transform.position.z), Quaternion.identity)));
-            m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(m_CameraPrefab, playerPosition.ToVector3(m_CameraPrefab.transform.position.z), Quaternion.identity)));
+            Vector3 cellSize = m_Terrain.Tilemap.cellSize;
+            m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(m_PlayerPrefab, playerPosition.ToVector3(cellSize, m_PlayerPrefab.transform.position.z), Quaternion.identity)));
+            m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(m_CameraPrefab, playerPosition.ToVector3(cellSize, m_CameraPrefab.transform.position.z), Quaternion.identity)));
             if (m_EnemyPatrolPerfabs != null && m_EnemyPatrolPerfabs.Length > 0)
             {
                 foreach (Vector2Int patrolPosition in patrolPositions)
                 {
                     GameObject enemyPatrolPerfab = m_EnemyPatrolPerfabs[Random.Range(0, m_EnemyPatrolPerfabs.Length)];
-                    m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(enemyPatrolPerfab, patrolPosition.ToVector3(enemyPatrolPerfab.transform.position.z), Quaternion.identity)));
+                    m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(enemyPatrolPerfab, patrolPosition.ToVector3(cellSize, enemyPatrolPerfab.transform.position.z), Quaternion.identity)));
                 }
             }
             if (m_EnemyBasePerfabs != null && m_EnemyBasePerfabs.Length > 0)
@@ -97,7 +98,7 @@ namespace MightyPirates
                 foreach (Vector2Int basePosition in basePositions)
                 {
                     GameObject enemyBasePerfab = m_EnemyBasePerfabs[Random.Range(0, m_EnemyBasePerfabs.Length)];
-                    m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(enemyBasePerfab, basePosition.ToVector3(enemyBasePerfab.transform.position.z), Quaternion.identity)));
+                    m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(enemyBasePerfab, basePosition.ToVector3(cellSize, enemyBasePerfab.transform.position.z), Quaternion.identity)));
                 }
             }
         }

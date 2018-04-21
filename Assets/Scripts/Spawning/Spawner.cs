@@ -104,8 +104,7 @@ namespace MightyPirates
         {
             for (int j = 0; j < 20; j++)
             {
-                Vector3 relativePosition = Random.insideUnitCircle * m_SpawnRadius;
-                position = transform.position + relativePosition;
+                position = (Vector2) transform.position + Random.insideUnitCircle * m_SpawnRadius;
                 if (TileTerrain.Instance.IsLegalPosition(position))
                     return true;
             }
