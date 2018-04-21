@@ -11,7 +11,13 @@ public sealed class Player : MonoBehaviour
     private Rigidbody2D m_Body;
 
     [SerializeField]
+    private GameObject m_Visualization;
+
+    [SerializeField]
     private float m_AccelerationPower = 5f;
+
+    [SerializeField]
+    private float m_TurnSpeed = 5f;
 
     [Header("Attack")]
     [SerializeField]
@@ -43,6 +49,7 @@ public sealed class Player : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+        HandleRotation();
         HandleShooting();
     }
 
@@ -61,12 +68,21 @@ public sealed class Player : MonoBehaviour
         m_Body.AddForce(acceleration, ForceMode2D.Force);
     }
 
+    private void HandleRotation()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        float angle = (Mathf.Atan2(mousePosition.y - Screen.height * 0.5f, mousePosition.x - Screen.width * 0.5f) - Mathf.PI * 0.5f) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        m_Visualization.transform.rotation = Quaternion.RotateTowards(m_Visualization.transform.rotation, targetRotation, m_TurnSpeed);
+    }
+
     private void HandleShooting()
     {
         if (!Input.GetButton(m_FireInputButton)) return;
         if (Time.time - m_TimeLastShotFired < m_ShotFrequency) return;
 
         m_TimeLastShotFired = Time.time;
-        m_BulletPool.Get(transform.position, transform.rotation);
+        m_BulletPool.Get(transform.position, m_Visualization.transform.rotation);
     }
 }
