@@ -2,6 +2,7 @@
 
 namespace MightyPirates
 {
+    [DisallowMultipleComponent]
     public sealed class TargetTracker : MonoBehaviour
     {
         private PooledObjectReference m_Target;

@@ -2,6 +2,7 @@
 
 namespace MightyPirates
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(TargetTracker))]
     public sealed class RotateToTarget : TargetTrackingBehaviour
     {
