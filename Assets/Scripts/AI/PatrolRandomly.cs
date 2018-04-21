@@ -69,6 +69,7 @@ namespace MightyPirates
             Vector3 target = m_Path[m_PathIndex];
             Vector2 toTarget = target - transform.position;
             m_Movement.AddAcceleration(toTarget);
+            m_Movement.AddLookAt(target);
 
             if (toTarget.sqrMagnitude < 1)
             {
