@@ -22,6 +22,11 @@ namespace MightyPirates
 
         public float TargetRadius { get; private set; }
 
+        private void OnDisable()
+        {
+            m_Target = default(PooledObjectReference);
+        }
+
         private void Update()
         {
             if (m_Target.Value == null)
