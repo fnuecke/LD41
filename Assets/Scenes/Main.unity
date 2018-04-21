@@ -491,7 +491,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 757249920}
-  m_Body: {fileID: 2142276220}
   m_Movement: {fileID: 2142276218}
   m_Weapon: {fileID: 1854442229}
   m_HorizontalInputAxis: Horizontal
@@ -508,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0382f9ccd0b4ce8999ead57600ee929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Body: {fileID: 0}
+  m_Body: {fileID: 2142276220}
   m_MoveSpeed: 10
   m_TurnSpeed: 5
 --- !u!4 &2142276219

@@ -52,10 +52,12 @@ namespace MightyPirates
 
         private void HandleRotation()
         {
-            float angle = Mathf.Atan2(m_LookVector.y, m_LookVector.x) * Mathf.Rad2Deg;
-            float rotation = Mathf.Min(Mathf.Abs(Mathf.Abs(angle - m_Body.rotation) - 2 * Mathf.PI), Mathf.Abs(angle - m_Body.rotation));
+            float targetAngle = Mathf.Atan2(m_LookVector.y, m_LookVector.x) * Mathf.Rad2Deg;
+            float currentAngle = m_Body.rotation;
+            float rotation = Mathf.DeltaAngle(currentAngle, targetAngle);
             if (rotation < -m_TurnSpeed) rotation = -m_TurnSpeed;
             else if (rotation > m_TurnSpeed) rotation = m_TurnSpeed;
+
             m_Body.MoveRotation(m_Body.rotation + rotation);
         }
     }

@@ -7,9 +7,6 @@ public sealed class Player : MonoBehaviour
     private Camera m_Camera;
 
     [SerializeField]
-    private Rigidbody2D m_Body;
-
-    [SerializeField]
     private Movement m_Movement;
 
     [SerializeField]
@@ -29,8 +26,6 @@ public sealed class Player : MonoBehaviour
     {
         if (m_Camera == null)
             m_Camera = GetComponent<Camera>();
-        if (m_Body == null)
-            m_Body = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
