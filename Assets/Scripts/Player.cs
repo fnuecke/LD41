@@ -1,7 +1,6 @@
 ﻿using MightyPirates;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public sealed class Player : MonoBehaviour
 {
     [SerializeField]
@@ -11,22 +10,10 @@ public sealed class Player : MonoBehaviour
     private Rigidbody2D m_Body;
 
     [SerializeField]
-    private GameObject m_Visualization;
+    private Movement m_Movement;
 
     [SerializeField]
-    private float m_AccelerationPower = 5f;
-
-    [SerializeField]
-    private float m_TurnSpeed = 5f;
-
-    [Header("Attack")]
-    [SerializeField]
-    private ObjectPool m_BulletPool;
-
-    [SerializeField]
-    private float m_ShotFrequency = 0.1f;
-
-    private float m_TimeLastShotFired;
+    private Weapon m_Weapon;
 
     [Header("Input")]
     [SerializeField]
@@ -55,34 +42,19 @@ public sealed class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        float horizontal = Input.GetAxis(m_HorizontalInputAxis);
-        float vertical = Input.GetAxis(m_VerticalInputAxis);
-
-        Vector2 acceleration = new Vector2(horizontal, vertical);
-
-        float accelerationMagnitude = Mathf.Clamp01(acceleration.magnitude);
-        if (Mathf.Approximately(accelerationMagnitude, 0f)) return;
-        acceleration /= Mathf.Clamp01(acceleration.magnitude);
-        acceleration *= m_AccelerationPower;
-
-        m_Body.AddForce(acceleration, ForceMode2D.Force);
+        m_Movement.SetAcceleration(new Vector2(Input.GetAxis(m_HorizontalInputAxis), Input.GetAxis(m_VerticalInputAxis)));
     }
 
     private void HandleRotation()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        float angle = (Mathf.Atan2(mousePosition.y - Screen.height * 0.5f, mousePosition.x - Screen.width * 0.5f) - Mathf.PI * 0.5f) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        m_Visualization.transform.rotation = Quaternion.RotateTowards(m_Visualization.transform.rotation, targetRotation, m_TurnSpeed);
+        Vector2 mousePosition = Input.mousePosition;
+        Vector2 lookVector = mousePosition - new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        m_Movement.SetLookVector(lookVector);
     }
 
     private void HandleShooting()
     {
         if (!Input.GetButton(m_FireInputButton)) return;
-        if (Time.time - m_TimeLastShotFired < m_ShotFrequency) return;
-
-        m_TimeLastShotFired = Time.time;
-        m_BulletPool.Get(transform.position, m_Visualization.transform.rotation);
+        m_Weapon.TryShoot();
     }
 }
