@@ -2,10 +2,25 @@
 
 namespace MightyPirates
 {
-    public sealed class ObjectPool : MonoBehaviour
+    [CreateAssetMenu]
+    public sealed class ObjectPool : ScriptableObject
     {
         [SerializeField]
         private GameObject m_Prefab;
+
+        private Transform m_Pool;
+
+        private Transform GetPool()
+        {
+            if (m_Pool == null)
+            {
+                GameObject pool = new GameObject(m_Prefab.name);
+                DontDestroyOnLoad(pool);
+                m_Pool = pool.transform;
+            }
+
+            return m_Pool;
+        }
 
         public GameObject Get()
         {
@@ -14,15 +29,18 @@ namespace MightyPirates
 
         public GameObject Get(Vector3 position, Quaternion rotation, Transform parent = null)
         {
-            if (transform.childCount == 0)
+            Transform pool = GetPool();
+
+            if (pool.childCount == 0)
             {
                 GameObject instance = Instantiate(m_Prefab, position, rotation, parent);
+                DontDestroyOnLoad(instance);
                 instance.GetOrAddComponent<PooledObject>().Pool = this;
                 instance.SetActive(true);
                 return instance;
             }
 
-            Transform child = transform.GetChild(transform.childCount - 1);
+            Transform child = pool.GetChild(pool.childCount - 1);
             child.SetParent(parent, false);
             child.SetPositionAndRotation(position, rotation);
             child.gameObject.SetActive(true);
@@ -35,7 +53,7 @@ namespace MightyPirates
             Debug.Assert(instance.GetComponent<PooledObject>()?.Pool == this);
 #endif
             instance.SetActive(false);
-            instance.transform.SetParent(transform);
+            instance.transform.SetParent(GetPool());
         }
     }
 }

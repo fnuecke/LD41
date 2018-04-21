@@ -152,11 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114609165295105210, guid: 0a57c71d95be1ef4bbd963985024b968,
-        type: 2}
-      propertyPath: m_AttackPool
-      value: 
-      objectReference: {fileID: 1654114515}
     - target: {fileID: 114329697334177990, guid: 0a57c71d95be1ef4bbd963985024b968,
         type: 2}
       propertyPath: m_Camera
@@ -377,93 +372,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4796549621536746, guid: 0b325f2735c6cdc4d936182ca9a81141, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b325f2735c6cdc4d936182ca9a81141, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1408435012
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1408435014}
-  - component: {fileID: 1408435013}
-  m_Layer: 0
-  m_Name: EnemyBulletPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1408435013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1408435012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c19c4befd87f4c3984f0d76660f08b20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 1051116037681942, guid: caad58d18dce5094098ee93cd2b55130, type: 2}
---- !u!4 &1408435014
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1408435012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1654114514
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1654114516}
-  - component: {fileID: 1654114515}
-  m_Layer: 0
-  m_Name: PlayerBulletPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1654114515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1654114514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c19c4befd87f4c3984f0d76660f08b20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 1051116037681942, guid: 779f0ca44f627ad48921bfb448fa01d4, type: 2}
---- !u!4 &1654114516
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1654114514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1912158559
 Prefab:
   m_ObjectHideFlags: 0
@@ -501,22 +414,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4674831619486464, guid: ce80a467c008cbd4da56d777bc3452fa, type: 2}
       propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114302275658173478, guid: ce80a467c008cbd4da56d777bc3452fa,
-        type: 2}
-      propertyPath: m_AttackPool
-      value: 
-      objectReference: {fileID: 1408435013}
-    - target: {fileID: 114943605431104956, guid: ce80a467c008cbd4da56d777bc3452fa,
-        type: 2}
-      propertyPath: m_ScanRadius
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114302275658173478, guid: ce80a467c008cbd4da56d777bc3452fa,
-        type: 2}
-      propertyPath: m_Range
-      value: 16
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce80a467c008cbd4da56d777bc3452fa, type: 2}

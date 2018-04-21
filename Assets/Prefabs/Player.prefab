@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bac8e45b4a4727b608aef14c41914f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AttackPool: {fileID: 0}
+  m_AttackPool: {fileID: 11400000, guid: bc34830e5484f654ca98b9dc2d34f445, type: 2}
   m_Frequency: 0.1
   m_Range: 128
 --- !u!212 &212791551666862286
