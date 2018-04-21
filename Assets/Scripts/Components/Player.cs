@@ -34,6 +34,7 @@ public sealed class Player : MonoBehaviour
         HandleMovement();
         HandleRotation();
         HandleShooting();
+        HandleCommands();
     }
 
     private void HandleMovement()
@@ -50,5 +51,28 @@ public sealed class Player : MonoBehaviour
     {
         if (!Input.GetButton(m_FireInputButton)) return;
         m_Weapon.TryShoot();
+    }
+
+    private void HandleCommands()
+    {
+        if (!Input.GetMouseButtonDown(1)) return;
+
+        Vector3 worldPosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D target = Physics2D.OverlapPoint(worldPosition, Layers.PickingMask);
+        if (target == null)
+            return;
+
+        Health health = target.GetComponentInParent<Health>();
+        if (health == null)
+            return;
+
+        foreach (Minion minion in Minion.All)
+        {
+            TargetTracker targetTracker = minion.GetComponent<TargetTracker>();
+            if (targetTracker == null)
+                continue;
+
+            targetTracker.Target = health.gameObject;
+        }
     }
 }
