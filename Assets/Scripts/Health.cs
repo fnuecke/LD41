@@ -37,7 +37,7 @@ namespace MightyPirates
         private void OnDeath()
         {
             OnDied();
-            Destroy(gameObject);
+            this.FreeGameObject();
         }
 
         private void OnDamageTaken()

@@ -16,7 +16,9 @@ namespace MightyPirates
         {
             if (transform.childCount == 0)
             {
-                return Instantiate(m_Prefab, position, rotation, parent);
+                GameObject instance = Instantiate(m_Prefab, position, rotation, parent);
+                instance.GetOrAddComponent<PooledObject>().Pool = this;
+                return instance;
             }
 
             Transform child = transform.GetChild(transform.childCount - 1);
@@ -27,6 +29,9 @@ namespace MightyPirates
 
         public void Free(GameObject instance)
         {
+#if DEBUG
+            Debug.Assert(instance.GetComponent<PooledObject>()?.Pool == this);
+#endif
             instance.transform.SetParent(transform);
         }
     }

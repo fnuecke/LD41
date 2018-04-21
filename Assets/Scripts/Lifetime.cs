@@ -18,7 +18,7 @@ namespace MightyPirates
         {
             if (Time.timeSinceLevelLoad - m_TimeCreated > m_Lifetime)
             {
-                Destroy(gameObject);
+                this.FreeGameObject();
             }
         }
     }

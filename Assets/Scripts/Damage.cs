@@ -20,7 +20,7 @@ namespace MightyPirates
 
             if (m_Once)
             {
-                Destroy(gameObject);
+                this.FreeGameObject();
             }
         }
 
