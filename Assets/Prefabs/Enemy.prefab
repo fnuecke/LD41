@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58426702024869436}
   - component: {fileID: 114627473349850236}
   - component: {fileID: 114943605431104956}
+  - component: {fileID: 114338292799050892}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -151,7 +152,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AttackPool: {fileID: 0}
   m_Frequency: 0.1
-  m_Range: 128
+  m_Range: 16
+--- !u!114 &114338292799050892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db65a9e3cd44c068596df426e70614f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxHealth: 20
 --- !u!114 &114627473349850236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19aa95923adc4f68818249e4bc0f182f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ScanRadius: 16
+  m_ScanRadius: 8
   m_Movement: {fileID: 114627473349850236}
   m_Weapon: {fileID: 114302275658173478}
 --- !u!212 &212152922311555914

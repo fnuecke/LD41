@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace MightyPirates
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Collider2D))]
     public sealed class Damage : MonoBehaviour
     {

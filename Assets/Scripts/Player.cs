@@ -1,6 +1,7 @@
 ﻿using MightyPirates;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public sealed class Player : MonoBehaviour
 {
     [SerializeField]

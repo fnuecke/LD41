@@ -2,6 +2,7 @@
 
 namespace MightyPirates
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Rigidbody2D))]
     public sealed class ForwardMover : MonoBehaviour
     {

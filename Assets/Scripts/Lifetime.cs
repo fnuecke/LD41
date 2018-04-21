@@ -2,6 +2,7 @@
 
 namespace MightyPirates
 {
+    [DisallowMultipleComponent]
     public sealed class Lifetime : MonoBehaviour
     {
         [SerializeField]

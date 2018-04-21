@@ -513,6 +513,11 @@ Prefab:
       propertyPath: m_ScanRadius
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114302275658173478, guid: ce80a467c008cbd4da56d777bc3452fa,
+        type: 2}
+      propertyPath: m_Range
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce80a467c008cbd4da56d777bc3452fa, type: 2}
   m_IsPrefabParent: 0
