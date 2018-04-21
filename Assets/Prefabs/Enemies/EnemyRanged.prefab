@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114487563142064204}
   - component: {fileID: 114039284967338600}
   - component: {fileID: 114721135494528626}
+  - component: {fileID: 114753152398455500}
   m_Layer: 10
   m_Name: EnemyRanged
   m_TagString: Untagged
@@ -296,6 +297,20 @@ MonoBehaviour:
   m_ScanMask:
     serializedVersion: 2
     m_Bits: 1536
+--- !u!114 &114753152398455500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6477a6c1744548b181a3d4970277df32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Movement: {fileID: 114627473349850236}
+  m_Distance: 2
+  m_TargetType: 1
 --- !u!114 &114884315304571076
 MonoBehaviour:
   m_ObjectHideFlags: 1
