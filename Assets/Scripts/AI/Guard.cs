@@ -64,8 +64,13 @@ namespace MightyPirates
             Vector2 toTarget = targetPosition - myPosition;
 
             float distance = toTarget.magnitude;
-            if (m_TargetTracker.Target != null && distance + Vector2.Distance(m_TargetTracker.Target.transform.position, myPosition) > m_MaxDistance * 2)
-                m_TargetTracker.Target = null;
+            if (m_TargetTracker.Target != null)
+            {
+                if (distance + Vector2.Distance(m_TargetTracker.Target.transform.position, myPosition) > m_MaxDistance * 2)
+                    m_TargetTracker.Target = null;
+                else
+                    return;
+            }
 
             Vector2 acceleration = toTarget.normalized * (distance - m_Distance);
 

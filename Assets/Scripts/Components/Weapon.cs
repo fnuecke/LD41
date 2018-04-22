@@ -16,10 +16,14 @@ namespace MightyPirates
         private float m_Range;
 
         [SerializeField]
+        private float m_AttackAngle = 30f;
+
+        [SerializeField]
         private Sounds.SoundType m_SoundType;
 
         private readonly List<ISpawnListener> m_SpawnListeners = new List<ISpawnListener>();
 
+        public float AttackAngle => m_AttackAngle;
         public float Range => m_Range;
         public Sounds.SoundType SoundType => m_SoundType;
 
@@ -30,7 +34,15 @@ namespace MightyPirates
 
             timeLastAttacked = Time.time;
             GameObject attack = ObjectPool.Get(m_Prefab, slot.transform.position, slot.transform.rotation);
-            attack.layer = Layers.IsEnemy(slot.gameObject.layer) ? Layers.EnemyShots : Layers.PlayerShots;
+            Shot shot = attack.GetComponent<Shot>();
+            if (shot != null)
+            {
+                shot.Initialize(Layers.IsEnemy(slot.gameObject.layer));
+            }
+            else
+            {
+                attack.layer = Layers.IsEnemy(slot.gameObject.layer) ? Layers.EnemyShots : Layers.PlayerShots;
+            }
             attack.GetComponents(m_SpawnListeners);
             if (m_SpawnListeners.Count > 0)
             {

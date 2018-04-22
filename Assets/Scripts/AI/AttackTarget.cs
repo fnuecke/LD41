@@ -37,7 +37,7 @@ namespace MightyPirates
 
                 Vector2 toTarget = m_TargetTracker.Target.transform.position - weaponSlot.transform.position;
                 float angleDelta = Vector2.Angle(toTarget, weaponSlot.transform.up);
-                if (angleDelta > 30)
+                if (angleDelta > weaponSlot.AttackAngle)
                     continue;
 
                 float distance = Vector2.Distance(m_TargetTracker.Target.transform.position, weaponSlot.transform.position);

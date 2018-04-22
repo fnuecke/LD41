@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 114721135494528626}
   - component: {fileID: 114753152398455500}
   - component: {fileID: 114724950296972424}
+  - component: {fileID: 114085064564449820}
   m_Layer: 10
   m_Name: EnemyRanged
   m_TagString: Untagged
@@ -266,6 +267,17 @@ MonoBehaviour:
   m_WeaponSlots:
   - {fileID: 114970622422759092}
   - {fileID: 114384425575234456}
+--- !u!114 &114085064564449820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2817f3c80c554511b399b0dd1e178977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114338292799050892
 MonoBehaviour:
   m_ObjectHideFlags: 1
