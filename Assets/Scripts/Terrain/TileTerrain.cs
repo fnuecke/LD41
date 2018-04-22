@@ -93,6 +93,11 @@ namespace MightyPirates
         public void GenerateTerrain()
         {
             Tilemap.ClearAllTiles();
+            Tilemap.origin = Vector3Int.zero;
+            Tilemap.size = new Vector3Int(m_Width, m_Height, 0);
+            Tilemap.ResizeBounds();
+
+            // Init with impassable.
             Tilemap.BoxFill(new Vector3Int(m_Width - 1, m_Height - 1, 0), m_Rock[0], 0, 0, m_Width - 1, m_Height - 1);
 
             long seed = m_Seed != 0 ? m_Seed : (long) (Random.value * int.MaxValue);
