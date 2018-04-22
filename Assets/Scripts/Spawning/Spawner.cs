@@ -27,6 +27,7 @@ namespace MightyPirates
         private Coroutine m_Coroutine;
         private readonly LinkedList<PooledObjectReference> m_LiveChildren = new LinkedList<PooledObjectReference>();
         private readonly List<ISpawnListener> m_SpawnListeners = new List<ISpawnListener>();
+        private int m_NextSpawnIndex;
 
         private void OnEnable()
         {
@@ -88,7 +89,8 @@ namespace MightyPirates
                 Vector3 position;
                 if (!FindLegalPosition(out position))
                     continue;
-                GameObject prefab = m_Prefabs[Random.Range(0, m_Prefabs.Length)];
+                GameObject prefab = m_Prefabs[m_NextSpawnIndex];
+                m_NextSpawnIndex = (m_NextSpawnIndex + 1) % m_Prefabs.Length;
                 GameObject instance = ObjectPool.Get(prefab, position, Quaternion.AngleAxis(Random.value * Mathf.PI * 2, Vector3.forward));
                 instance.GetComponents(m_SpawnListeners);
                 foreach (ISpawnListener listener in m_SpawnListeners)
