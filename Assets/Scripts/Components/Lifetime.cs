@@ -8,6 +8,9 @@ namespace MightyPirates
         [SerializeField]
         private float m_Lifetime;
 
+        [SerializeField]
+        private bool m_Destroy;
+
         private float m_TimeCreated;
 
         private void OnEnable()
@@ -19,7 +22,10 @@ namespace MightyPirates
         {
             if (Time.time - m_TimeCreated > m_Lifetime)
             {
-                this.FreeGameObject();
+                if (m_Destroy)
+                    Destroy(gameObject);
+                else
+                    this.FreeGameObject();
             }
         }
     }

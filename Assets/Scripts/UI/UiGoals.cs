@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace MightyPirates.UI
@@ -11,6 +12,11 @@ namespace MightyPirates.UI
 
         [SerializeField]
         private RectTransform m_Container;
+
+        [SerializeField]
+        private Image m_Background;
+
+        private List<Text> m_GoalItems = new List<Text>();
 
         private void OnEnable()
         {
@@ -30,27 +36,36 @@ namespace MightyPirates.UI
 
         private void UpdateGoals()
         {
-            int childIndex = 0;
+            if (m_GoalItems == null)
+                m_GoalItems = new List<Text>();
+            int goalIndex = 0;
             foreach (string goalName in GoalManager.GetGoalNames())
             {
                 int goalCount = GoalManager.GetGoalCount(goalName);
                 string goalText = goalName + " (<color=lime>" + goalCount + "</color>)";
-                if (childIndex < m_Container.childCount)
+                if (goalIndex < m_GoalItems.Count)
                 {
-                    Transform child = m_Container.GetChild(childIndex);
-                    child.GetComponent<Text>().text = goalText;
+                    Text item = m_GoalItems[goalIndex];
+                    item.text = goalText;
                 }
                 else
                 {
                     GameObject child = ObjectPool.Get(m_Prefab, Vector3.zero, Quaternion.identity, m_Container);
-                    child.GetComponent<Text>().text = goalText;
+                    Text item = child.GetComponent<Text>();
+                    m_GoalItems.Add(item);
+                    item.text = goalText;
                 }
-                ++childIndex;
+                ++goalIndex;
             }
-            for (int i = m_Container.childCount - 1; i >= childIndex; i--)
+
+            for (int i = goalIndex; i < m_GoalItems.Count; ++i)
             {
-                Destroy(m_Container.GetChild(i).gameObject);
+                Text item = m_GoalItems[i];
+                item.gameObject.Free();
             }
+            m_GoalItems.RemoveRange(goalIndex, m_GoalItems.Count - goalIndex);
+
+            m_Background.enabled = m_GoalItems.Count > 0;
         }
     }
 }
