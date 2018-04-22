@@ -8,5 +8,7 @@
         GoalsUi,
         TileTerrain,
         Minimap,
+        Player,
+        PlayerCamera,
     }
 }

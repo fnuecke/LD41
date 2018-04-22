@@ -488,6 +488,7 @@ MonoBehaviour:
   - {fileID: 114244397748815482}
   - {fileID: 114245045892963802}
   m_DodgeStrength: 500
+  m_BulletTimeTimeScale: 0.25
   m_HorizontalInputAxis: Horizontal
   m_VerticalInputAxis: Vertical
   m_DodgeInputButton: Dodge

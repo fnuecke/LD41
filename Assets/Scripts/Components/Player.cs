@@ -3,6 +3,7 @@ using MightyPirates;
 using UnityEngine;
 
 [DisallowMultipleComponent]
+[DefaultExecutionOrder((int) ExectionOrders.Player)]
 public sealed class Player : MonoBehaviour
 {
     [SerializeField]
@@ -46,6 +47,26 @@ public sealed class Player : MonoBehaviour
     public Pickupable Pickupable => m_Pickupable;
     public IList<WeaponSlot> Weapons => m_WeaponSlots;
 
+    private void OnEnable()
+    {
+        Health health = GetComponent<Health>();
+        if (health != null)
+        {
+            health.DamageTaken += HandleDamageTaken;
+            health.Died += HandleDied;
+        }
+    }
+
+    private void OnDisable()
+    {
+        Health health = GetComponent<Health>();
+        if (health != null)
+        {
+            health.DamageTaken -= HandleDamageTaken;
+            health.Died -= HandleDied;
+        }
+    }
+
     private void Update()
     {
         if (m_Camera == null)
@@ -58,6 +79,16 @@ public sealed class Player : MonoBehaviour
         HandleCommands();
         if (!HandlePickup())
             HandleDrop();
+    }
+
+    private void HandleDamageTaken(GameObject obj)
+    {
+        // TODO Screenshake or something? Screen flashing?
+    }
+
+    private void HandleDied(GameObject obj)
+    {
+        // TODO Scorescreen/Gameover.
     }
 
     private void HandleMovement()

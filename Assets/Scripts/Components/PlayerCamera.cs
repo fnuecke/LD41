@@ -2,6 +2,7 @@
 
 namespace MightyPirates
 {
+    [DefaultExecutionOrder((int)ExectionOrders.PlayerCamera)]
     public sealed class PlayerCamera : MonoBehaviour
     {
         public static AudioSource GlobalAudioSource => s_Instance.m_AudioSource;
@@ -34,7 +35,7 @@ namespace MightyPirates
             Vector3 cameraPosition = playerPosition + playerLookVector;
             cameraPosition.z = transform.position.z;
 
-            transform.position = Vector3.Lerp(transform.position, cameraPosition, 0.5f);
+            transform.position = Vector3.Lerp(transform.position, cameraPosition, 5f * Time.deltaTime);
         }
     }
 }
