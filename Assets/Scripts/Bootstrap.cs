@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 namespace MightyPirates
 {
     public sealed class Bootstrap : MonoBehaviour
     {
+        private const int SpawnGridSize = 8;
+
         [SerializeField]
         private TileTerrain m_Terrain;
 
@@ -53,20 +57,66 @@ namespace MightyPirates
             List<Vector2Int> patrolPositions = new List<Vector2Int>();
             List<Vector2Int> basePositions = new List<Vector2Int>();
 
+            // Prepare a grid of candidate positions:
+            // +-------+-------+-------+
+            // |   x   |   x   |   x   |
+            // +-------+-------+-------+
+            // |   x   |   x   |   x   |
+            // +-------+-------+-------+
+            // |   x   |   x   |   x   |
+            // +-------+-------+-------+
+            // Pretend this is a 24x24 grid, spawn pos interval is 8, so the
+            // xs should be the candidate positions.
+            BoundsInt bounds = m_Terrain.SafeBounds;
+            List<Vector2Int> candidates = new List<Vector2Int>();
+            int cols = bounds.size.x / SpawnGridSize;
+            int rows = bounds.size.y / SpawnGridSize;
+            for (int x = 0; x <= cols; x++)
+            {
+                for (int y = 0; y <= rows; y++)
+                {
+                    Vector2Int candidate = new Vector2Int(bounds.xMin + SpawnGridSize / 2 + x * SpawnGridSize, bounds.yMin + SpawnGridSize / 2 + y * SpawnGridSize);
+                    candidates.Add(candidate);
+                }
+            }
+
+            int underflow = 1 + m_EnemyPatrolCount + m_EnemyBaseCount - candidates.Count;
+            if (underflow > 0)
+            {
+                int basesRemoved = Mathf.Min(underflow, m_EnemyBaseCount);
+                m_EnemyBaseCount -= basesRemoved;
+                underflow -= basesRemoved;
+            }
+            if (underflow > 0)
+            {
+                int patrolsRemoved = Mathf.Min(underflow, m_EnemyPatrolCount);
+                m_EnemyBaseCount -= patrolsRemoved;
+                underflow -= patrolsRemoved;
+            }
+            if (underflow > 0)
+            {
+                throw new Exception("Map too small to spawn even the player... welp!");
+            }
+
+            List<Vector2Int> shuffledCandidates = new List<Vector2Int>();
             for (;;)
             {
+                retry:
+                shuffledCandidates.Clear();
+                shuffledCandidates.AddRange(candidates);
+                shuffledCandidates.Shuffle();
+
                 m_Terrain.GenerateTerrain();
 
-                BoundsInt bounds = m_Terrain.SafeBounds;
-                if (!FindLegalPosition(bounds, out playerPosition))
-                    continue;
+                if (!FindLegalPosition(shuffledCandidates, out playerPosition))
+                    goto retry;
 
                 patrolPositions.Clear();
                 for (int i = 0; i < m_EnemyPatrolCount; i++)
                 {
                     Vector2Int patrolPosition;
-                    if (!FindReachablePosition(bounds, playerPosition, out patrolPosition))
-                        continue;
+                    if (!FindReachablePosition(playerPosition, shuffledCandidates, out patrolPosition))
+                        goto retry;
                     patrolPositions.Add(patrolPosition);
                 }
 
@@ -74,8 +124,8 @@ namespace MightyPirates
                 for (int i = 0; i < m_EnemyBaseCount; i++)
                 {
                     Vector2Int basePosition;
-                    if (!FindReachablePosition(bounds, playerPosition, out basePosition))
-                        continue;
+                    if (!FindReachablePosition(playerPosition, shuffledCandidates, out basePosition))
+                        goto retry;
                     basePositions.Add(basePosition);
                 }
 
@@ -103,24 +153,36 @@ namespace MightyPirates
             }
         }
 
-        private bool FindLegalPosition(BoundsInt bounds, out Vector2Int result)
+        private bool FindLegalPosition(List<Vector2Int> shuffledCandidates, out Vector2Int result)
         {
+            if (shuffledCandidates.Count == 0)
+            {
+                result = Vector2Int.zero;
+                return false;
+            }
+
             for (int i = 0; i < 20; i++)
             {
-                result = RandomExtensions.Vector2Int(bounds);
+                int positionIndex = Random.Range(0, shuffledCandidates.Count);
+                result = shuffledCandidates[positionIndex] + (Random.insideUnitCircle * SpawnGridSize / 2).ToVector2Int(Vector3.one);
                 if (m_Terrain.Tilemap.GetColliderType(result.ToVector3Int()) == Tile.ColliderType.None)
+                {
+                    shuffledCandidates.RemoveAt(positionIndex);
                     return true;
+                }
             }
 
             result = Vector2Int.zero;
             return false;
         }
 
-        private bool FindReachablePosition(BoundsInt bounds, Vector2Int start, out Vector2Int result)
+        private bool FindReachablePosition(Vector2Int start, List<Vector2Int> shuffledCandidates, out Vector2Int result)
         {
             for (int i = 0; i < 20; i++)
             {
-                if (FindLegalPosition(bounds, out result) && Pathfinding.FindPath(m_Terrain.Tilemap, start, result) != null)
+                // Yes we consume the position either way, but if we can't reach it it's likely we won't get any other
+                // useful positions from it, so whatever.
+                if (FindLegalPosition(shuffledCandidates, out result) && Pathfinding.FindPath(m_Terrain.Tilemap, start, result) != null)
                     return true;
             }
 
