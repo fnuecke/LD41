@@ -147,9 +147,11 @@ MonoBehaviour:
     type: 2}
   m_EnemyPatrolPerfabs:
   - {fileID: 1041054122136236, guid: 4480eb2b2da7fda4dbe980ca17abcc28, type: 2}
-  m_EnemyBasePerfabs: []
+  m_EnemyBasePerfabs:
+  - {fileID: 1808497577679382, guid: cc6960cfa6ad40c448f3a3054e66db48, type: 2}
+  - {fileID: 1891416167195626, guid: 0b6fa7ce32ebf6d4e8199094eaa542fb, type: 2}
   m_EnemyPatrolCount: 10
-  m_EnemyBaseCount: 0
+  m_EnemyBaseCount: 3
 --- !u!4 &1004789674
 Transform:
   m_ObjectHideFlags: 0
