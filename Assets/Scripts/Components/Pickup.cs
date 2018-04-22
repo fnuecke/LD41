@@ -4,6 +4,6 @@ namespace MightyPirates
 {
     public sealed class Pickup : MonoBehaviour
     {
-        public Object Value { get; set; }
+        public Pickupable Value { get; set; }
     }
 }

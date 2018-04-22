@@ -12,7 +12,7 @@ namespace MightyPirates
             if (Random.value > m_Probability)
                 return;
 
-            Weapon loot = LootTable.GetLoot();
+            Pickupable loot = LootTable.GetLoot();
             if (loot == null)
                 return;
 

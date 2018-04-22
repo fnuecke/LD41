@@ -1,5 +1,8 @@
-﻿namespace MightyPirates.Powerups
+﻿using UnityEngine;
+
+namespace MightyPirates.Powerups
 {
+    [CreateAssetMenu]
     public sealed class IncreaseMinionCount : Powerup
     {
         public override void Activate(Player player)

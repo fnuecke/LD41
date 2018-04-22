@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbcf4ce24403436bac901940414f9e26, type: 3}
+  m_Name: IncreaseMinionCount
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: 4d88be0f19b8ed54483550e9b160a1c0, type: 3}
+  m_Title: Follower Count +1
+  m_Description: Increases the number of ships that will follow you by one.

@@ -12,8 +12,22 @@ namespace MightyPirates
 
         private int m_CurrentHealth;
 
-        public int CurrentHealth => m_CurrentHealth;
-        public int MaxHealth => m_MaxHealth;
+        public int CurrentHealth
+        {
+            get { return m_CurrentHealth; }
+            set { m_CurrentHealth = Mathf.Clamp(value, 0, MaxHealth); }
+        }
+
+        public int MaxHealth
+        {
+            get { return m_MaxHealth; }
+            set
+            {
+                float percent = m_CurrentHealth / (float) m_MaxHealth;
+                m_MaxHealth = Mathf.Max(1, value);
+                m_CurrentHealth = Mathf.Clamp(Mathf.CeilToInt(m_MaxHealth * percent), 0, m_MaxHealth);
+            }
+        }
 
         public event Action<GameObject> DamageTaken;
         public event Action<GameObject> Died;

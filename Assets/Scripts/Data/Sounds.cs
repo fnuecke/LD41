@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 
 namespace MightyPirates
 {
-    [CreateAssetMenu]
     public sealed class Sounds : ScriptableObject
     {
         public enum SoundType

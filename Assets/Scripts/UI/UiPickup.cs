@@ -18,6 +18,12 @@ namespace MightyPirates.UI
         private Text m_PickupDescription;
 
         [SerializeField]
+        private GameObject m_PowerupControls;
+
+        [SerializeField]
+        private GameObject m_EquipmentPanels;
+
+        [SerializeField]
         private GameObject[] m_EquipmentPanel;
 
         [SerializeField]
@@ -56,22 +62,33 @@ namespace MightyPirates.UI
                 m_PickupTitle.text = pickup.Title;
                 m_PickupDescription.text = pickup.Description;
 
-                for (int i = 0; i < m_Player.Weapons.Count; i++)
+                if (pickup is Weapon)
                 {
-                    Weapon weapon = m_Player.Weapons[i].Weapon;
-                    if (weapon == null)
+                    for (int i = 0; i < m_Player.Weapons.Count; i++)
                     {
-                        m_EquipmentPanel[i].SetActive(false);
-                    }
-                    else
-                    {
-                        m_EquipmentImage[i].overrideSprite = weapon.Sprite;
-                        m_EquipmentTitle[i].text = weapon.Title;
-                        m_EquipmentDescription[i].text = weapon.Description;
+                        Weapon weapon = m_Player.Weapons[i].Weapon;
+                        if (weapon == null)
+                        {
+                            m_EquipmentPanel[i].SetActive(false);
+                        }
+                        else
+                        {
+                            m_EquipmentImage[i].overrideSprite = weapon.Sprite;
+                            m_EquipmentTitle[i].text = weapon.Title;
+                            m_EquipmentDescription[i].text = weapon.Description;
 
-                        m_EquipmentPanel[i].SetActive(true);
+                            m_EquipmentPanel[i].SetActive(true);
+                        }
                     }
+
+                    m_EquipmentPanels.SetActive(true);
                 }
+                else
+                {
+                    m_EquipmentPanels.SetActive(false);
+                }
+
+                m_PowerupControls.SetActive(pickup is Powerup);
 
                 m_Panel.SetActive(true);
             }

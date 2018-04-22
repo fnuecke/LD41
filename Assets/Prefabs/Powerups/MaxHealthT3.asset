@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7060dae306484a7ab39a737ef034230f, type: 3}
+  m_Name: MaxHealthT3
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: 2ea23b9e8321d3e4f909b0118ae0a870, type: 3}
+  m_Title: Health +3
+  m_Description: Increases health a lot.
+  m_Amount: 250

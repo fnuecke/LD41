@@ -20,7 +20,7 @@ namespace MightyPirates
 
         public static GameObject DropPrefab => s_Instance.m_DropPrefab;
 
-        public static Weapon GetLoot()
+        public static Pickupable GetLoot()
         {
             return s_Instance.GetLootInternal();
         }
@@ -51,7 +51,7 @@ namespace MightyPirates
             }
         }
 
-        private Weapon GetLootInternal()
+        private Pickupable GetLootInternal()
         {
             int roll = Random.Range(0, m_WeightSum + 1);
             foreach (LootEntry entry in m_OrderedLoot)
@@ -70,7 +70,7 @@ namespace MightyPirates
         private struct LootEntry
         {
             public int weight;
-            public Weapon loot;
+            public Pickupable loot;
         }
     }
 }

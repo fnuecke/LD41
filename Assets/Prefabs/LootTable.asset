@@ -14,9 +14,23 @@ MonoBehaviour:
   m_DropPrefab: {fileID: 1213107794350534, guid: 923ad78845abb6c438560090d5f90f28,
     type: 2}
   m_Loot:
-  - weight: 20
+  - weight: 80
     loot: {fileID: 11400000, guid: 3be0bcadd7eaf324f98dd2b86d9fbe7b, type: 2}
-  - weight: 20
+  - weight: 50
     loot: {fileID: 11400000, guid: b37c6d22edb98ec4c9e928657d063a3f, type: 2}
-  - weight: 10
+  - weight: 30
     loot: {fileID: 11400000, guid: a2f47e6b7d0dd844789bf46c2b79f54e, type: 2}
+  - weight: 10
+    loot: {fileID: 11400000, guid: e11e657f438caaf4ea051bd944bd710d, type: 2}
+  - weight: 10
+    loot: {fileID: 11400000, guid: d2454e9c8f38ae24eadce3bf7e5c7aaf, type: 2}
+  - weight: 5
+    loot: {fileID: 11400000, guid: e91765f626e041741a6a7369c11886e2, type: 2}
+  - weight: 1
+    loot: {fileID: 11400000, guid: ea23c829d5151f34890408f72d47c85e, type: 2}
+  - weight: 20
+    loot: {fileID: 11400000, guid: c557c55a62f9d094f931c033daecc3c5, type: 2}
+  - weight: 10
+    loot: {fileID: 11400000, guid: f7d19ade208b5b047a48deba0d864341, type: 2}
+  - weight: 2
+    loot: {fileID: 11400000, guid: 7e287d36c331bbd42bf1e4369d95514c, type: 2}

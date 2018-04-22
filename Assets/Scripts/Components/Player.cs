@@ -56,7 +56,8 @@ public sealed class Player : MonoBehaviour
         HandleRotation();
         HandleShooting();
         HandleCommands();
-        HandlePickup();
+        if (!HandlePickup())
+            HandleDrop();
     }
 
     private void HandleMovement()
@@ -141,13 +142,13 @@ public sealed class Player : MonoBehaviour
         }
     }
 
-    private void HandlePickup()
+    private bool HandlePickup()
     {
         m_Pickupable = null;
 
         int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, 4, m_PickupScanResults, Layers.PickupMask);
         if (hitCount == 0)
-            return;
+            return false;
 
         Collider2D bestColl = m_PickupScanResults[0];
         float bestDist = Vector2.Distance(transform.position, bestColl.transform.position);
@@ -164,9 +165,9 @@ public sealed class Player : MonoBehaviour
 
         Pickup pickup = bestColl.GetComponent<Pickup>();
         if (pickup == null)
-            return;
+            return false;
 
-        m_Pickupable = pickup.Value as Pickupable;
+        m_Pickupable = pickup.Value;
 
         Weapon weapon = pickup.Value as Weapon;
         if (weapon != null)
@@ -189,7 +190,7 @@ public sealed class Player : MonoBehaviour
                 equipSlot = 3;
             }
             if (equipSlot < 0)
-                return;
+                return false;
 
             Weapon oldWeapon = m_WeaponSlots[equipSlot].Weapon;
             m_WeaponSlots[equipSlot].Weapon = weapon;
@@ -198,11 +199,59 @@ public sealed class Player : MonoBehaviour
             if (pickup.Value == null)
                 pickup.gameObject.Free();
         }
+
         Powerup powerup = pickup.Value as Powerup;
         if (powerup != null)
         {
+            if (!Input.GetButtonDown(m_Equip0InputButton))
+                return false;
+
             powerup.Activate(this);
             pickup.gameObject.Free();
         }
+
+        return true;
+    }
+
+    private void HandleDrop()
+    {
+        int equipSlot = -1;
+        if (Input.GetButtonDown(m_Equip0InputButton))
+        {
+            equipSlot = 0;
+        }
+        else if (Input.GetButtonDown(m_Equip1InputButton))
+        {
+            equipSlot = 1;
+        }
+        else if (Input.GetButtonDown(m_Equip2InputButton))
+        {
+            equipSlot = 2;
+        }
+        else if (Input.GetButtonDown(m_Equip3InputButton))
+        {
+            equipSlot = 3;
+        }
+        if (equipSlot < 0)
+            return;
+
+        Weapon weapon = m_WeaponSlots[equipSlot].Weapon;
+        if (weapon == null)
+        {
+#if DEBUG
+            Pickupable loot = LootTable.GetLoot();
+            if (loot != null)
+            {
+                Pickup cheatedPickup = ObjectPool.Get(LootTable.DropPrefab, transform.position, Quaternion.identity).GetComponent<Pickup>();
+                cheatedPickup.Value = loot;
+            }
+#endif
+            return;
+        }
+
+        m_WeaponSlots[equipSlot].Weapon = null;
+
+        Pickup pickup = ObjectPool.Get(LootTable.DropPrefab, transform.position, Quaternion.identity).GetComponent<Pickup>();
+        pickup.Value = weapon;
     }
 }
