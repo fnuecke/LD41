@@ -2,6 +2,7 @@
 {
     public enum ExectionOrders
     {
+        Bootstrap,
         GoalManager,
         Goal,
         GoalsUi,

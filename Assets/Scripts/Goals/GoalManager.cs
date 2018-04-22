@@ -31,7 +31,7 @@ namespace MightyPirates
                 s_Instance.RemoveInternal(goal);
         }
 
-        public static IEnumerable<string> GetGoalNames() => s_Instance.m_Goals.Keys;
+        public static ICollection<string> GetGoalNames() => s_Instance.m_Goals.Keys;
 
         public static int GetGoalCount(string title) => s_Instance.m_Goals[title].Count;
 

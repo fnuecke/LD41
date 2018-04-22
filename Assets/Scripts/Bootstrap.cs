@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -6,6 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace MightyPirates
 {
+    [DefaultExecutionOrder((int) ExectionOrders.Bootstrap)]
     public sealed class Bootstrap : MonoBehaviour
     {
         private const int SpawnGridSize = 8;
@@ -18,6 +20,9 @@ namespace MightyPirates
 
         [SerializeField]
         private Color m_ColorOpen = Color.white, m_ColorRock = Color.black;
+
+        [SerializeField]
+        private GameObject m_LoadingScreen;
 
         [SerializeField]
         private GameObject m_PlayerPrefab;
@@ -41,7 +46,18 @@ namespace MightyPirates
 
         private void Start()
         {
+            GoalManager.GoalsChanged += HandleGoalsChanged;
+
+            Time.timeScale = 0;
             BuildLevel();
+        }
+
+        private void HandleGoalsChanged()
+        {
+            if (GoalManager.GetGoalNames().Count == 0)
+            {
+                StartCoroutine(FadeInLoadingScreen());
+            }
         }
 
         public void RebuildLevel()
@@ -179,6 +195,45 @@ namespace MightyPirates
                     m_GeneratedObjects.Add(new PooledObjectReference(ObjectPool.Get(enemyBasePerfab, basePosition.ToVector3(cellSize, enemyBasePerfab.transform.position.z), Quaternion.identity)));
                 }
             }
+
+            StartCoroutine(FadeOutLoadingScreen());
+        }
+
+        private const int LoadingScreenFadeSteps = 50;
+
+        private IEnumerator FadeInLoadingScreen()
+        {
+            Time.timeScale = 0;
+
+            yield return new WaitForSecondsRealtime(0.5f);
+
+            m_LoadingScreen.SetActive(true);
+            CanvasGroup canvasGroup = m_LoadingScreen.GetOrAddComponent<CanvasGroup>();
+            for (int i = 0; i < LoadingScreenFadeSteps; i++)
+            {
+                float progress = (i + 1) / (float) LoadingScreenFadeSteps;
+                canvasGroup.alpha = progress;
+                yield return null;
+            }
+
+            GC.Collect();
+            RebuildLevel();
+        }
+
+        private IEnumerator FadeOutLoadingScreen()
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
+
+            CanvasGroup canvasGroup = m_LoadingScreen.GetOrAddComponent<CanvasGroup>();
+            for (int i = 0; i < LoadingScreenFadeSteps; i++)
+            {
+                float progress = i / (float) LoadingScreenFadeSteps;
+                canvasGroup.alpha = 1 - progress;
+                yield return null;
+            }
+
+            m_LoadingScreen.SetActive(false);
+            Time.timeScale = 1;
         }
 
         private bool FindLegalPosition(List<Vector2Int> shuffledCandidates, out Vector2Int result)

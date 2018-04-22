@@ -34,6 +34,12 @@ namespace MightyPirates
                     continue;
                 m_Path.Add(position);
             }
+            
+            if (m_Path.Count < 5)
+                Debug.LogWarning("Failed finding a full sized patrol path.");
+
+            if (m_Path.Count == 0)
+                Debug.LogError("Failed finding any patrol path at all!");
 
             int keyCount = m_Path.Count;
             if (keyCount > 1)
@@ -66,6 +72,8 @@ namespace MightyPirates
 
         private void Update()
         {
+            if (m_Path.Count == 0)
+                return;
             Vector3 target = m_Path[m_PathIndex];
             Vector2 toTarget = target - transform.position;
             m_Movement.AddAcceleration(toTarget);

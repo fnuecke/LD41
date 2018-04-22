@@ -32,7 +32,7 @@ namespace MightyPirates
         {
             PooledObject pooledObject = instance.GetComponent<PooledObject>();
             instance.gameObject.SetActive(false);
-            instance.transform.SetParent(GetPool(pooledObject.Prefab));
+            instance.transform.SetParent(GetPool(pooledObject.Prefab), false);
             pooledObject.Version++;
         }
 
