@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MightyPirates
 {
     [CreateAssetMenu]
-    public sealed class Weapon : ScriptableObject
+    public sealed class Weapon : Pickupable
     {
         [SerializeField]
         private GameObject m_Prefab;

@@ -14,6 +14,12 @@ namespace MightyPirates
         public float AttackAngle => m_Weapon != null ? m_Weapon.AttackAngle : 0f;
         public float Range => m_Weapon != null ? m_Weapon.Range : 0f;
 
+        public Weapon Weapon
+        {
+            get { return m_Weapon; }
+            set { m_Weapon = value; }
+        }
+
         public void TryShoot()
         {
             if (m_Weapon != null)
