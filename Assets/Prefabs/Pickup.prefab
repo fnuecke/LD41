@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4663399997955658}
   - component: {fileID: 114772313961076964}
   - component: {fileID: 58393109951184564}
-  m_Layer: 1
+  m_Layer: 15
   m_Name: Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4277390571504890}
   - component: {fileID: 212100422979206706}
   - component: {fileID: 95091516868267818}
-  m_Layer: 1
+  m_Layer: 15
   m_Name: Visualization
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4078806003161632}
   - component: {fileID: 198800152497270536}
   - component: {fileID: 199806195592216686}
-  m_Layer: 1
+  m_Layer: 15
   m_Name: Particles Sparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4884480707452408}
   - component: {fileID: 212021440754070106}
-  m_Layer: 1
+  m_Layer: 15
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608fdae31d10470e8a5daeeba61cdd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Value: {fileID: 0}
 --- !u!198 &198800152497270536
 ParticleSystem:
   m_ObjectHideFlags: 1

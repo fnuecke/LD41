@@ -1,4 +1,5 @@
-﻿using MightyPirates;
+﻿using System.Collections.Generic;
+using MightyPirates;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -43,6 +44,7 @@ public sealed class Player : MonoBehaviour
     private Pickupable m_Pickupable;
 
     public Pickupable Pickupable => m_Pickupable;
+    public IList<WeaponSlot> Weapons => m_WeaponSlots;
 
     private void Update()
     {

@@ -11,7 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bac8e45b4a4727b608aef14c41914f, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 0}
+  m_Title: Simple Gun
+  m_Description: It's a simple gun. It shoots bullets.
   m_Prefab: {fileID: 1051116037681942, guid: 779f0ca44f627ad48921bfb448fa01d4, type: 2}
   m_Frequency: 0.1
   m_Range: 10
+  m_AttackAngle: 30
   m_SoundType: 2

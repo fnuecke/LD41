@@ -11,6 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bac8e45b4a4727b608aef14c41914f, type: 3}
   m_Name: Melee
   m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 0}
+  m_Title: Fisticuffs
+  m_Description: Close combat weapon. Deals a lot of damage, but has no mentionable
+    range.
   m_Prefab: {fileID: 1991692795272734, guid: 03a5f6bed0dc59b41a23f33dd7ab8538, type: 2}
   m_Frequency: 0.1
   m_Range: 0.5
