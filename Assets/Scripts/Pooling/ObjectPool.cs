@@ -42,7 +42,6 @@ namespace MightyPirates
             if (!Pools.TryGetValue(prefab, out pool))
             {
                 GameObject gameObject = new GameObject(prefab.name);
-                Object.DontDestroyOnLoad(gameObject);
                 pool = gameObject.transform;
                 Pools.Add(prefab, pool);
             }

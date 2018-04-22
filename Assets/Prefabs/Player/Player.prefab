@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Body: {fileID: 50023706546419716}
-  m_MoveSpeed: 1000
+  m_MoveSpeed: 2000
   m_TurnSpeed: 10
 --- !u!114 &114632961580676134
 MonoBehaviour:
