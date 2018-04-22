@@ -9,7 +9,7 @@ public sealed class Player : MonoBehaviour
 
     [SerializeField]
     private Weapon m_Weapon;
-    
+
     [SerializeField]
     private float m_DodgeStrength = 5;
 
@@ -30,6 +30,9 @@ public sealed class Player : MonoBehaviour
 
     private void Update()
     {
+        if (m_Camera == null)
+            m_Camera = Camera.main;
+
         HandleMovement();
         HandleDodging(); // D:
         HandleRotation();
@@ -50,8 +53,6 @@ public sealed class Player : MonoBehaviour
 
     private void HandleRotation()
     {
-        if (m_Camera == null)
-            m_Camera = Camera.main;
         m_Movement.AddLookAt(m_Camera.ScreenToWorldPoint(Input.mousePosition));
     }
 
@@ -64,10 +65,14 @@ public sealed class Player : MonoBehaviour
 
     private void HandleCommands()
     {
+        HandleAttackCommand();
+        HandleMoveCommand();
+    }
+
+    private void HandleAttackCommand()
+    {
         if (!Input.GetMouseButtonDown(1))
             return;
-        if (m_Camera == null)
-            m_Camera = Camera.main;
 
         Vector3 worldPosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
         Collider2D target = Physics2D.OverlapPoint(worldPosition, Layers.PickingMask);
@@ -88,6 +93,31 @@ public sealed class Player : MonoBehaviour
                 continue;
 
             targetTracker.Target = entity.gameObject;
+        }
+    }
+
+    private void HandleMoveCommand()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            Vector3 worldPosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
+            foreach (Minion minion in Minion.All)
+            {
+                MoveToPosition moveTo = minion.GetComponent<MoveToPosition>();
+                if (moveTo != null)
+                    moveTo.SetTarget(worldPosition);
+            }
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            foreach (Minion minion in Minion.All)
+            {
+                MoveToPosition moveTo = minion.GetComponent<MoveToPosition>();
+                if (moveTo == null)
+                    continue;
+
+                moveTo.ClearTarget();
+            }
         }
     }
 }

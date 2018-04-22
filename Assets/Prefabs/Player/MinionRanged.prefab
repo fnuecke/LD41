@@ -38,16 +38,17 @@ GameObject:
   - component: {fileID: 50797784299300402}
   - component: {fileID: 58738391395401436}
   - component: {fileID: 114680560332852774}
-  - component: {fileID: 114677730453914824}
-  - component: {fileID: 114725495455467984}
+  - component: {fileID: 114081708955064080}
   - component: {fileID: 114865521141357000}
+  - component: {fileID: 114677730453914824}
+  - component: {fileID: 114642157933146850}
+  - component: {fileID: 114082084096846980}
+  - component: {fileID: 114725495455467984}
+  - component: {fileID: 114684889524561358}
   - component: {fileID: 114066591327016478}
   - component: {fileID: 114934139805640068}
   - component: {fileID: 114250157567048406}
   - component: {fileID: 114579362831293808}
-  - component: {fileID: 114082084096846980}
-  - component: {fileID: 114081708955064080}
-  - component: {fileID: 114684889524561358}
   m_Layer: 9
   m_Name: MinionRanged
   m_TagString: Untagged
@@ -225,6 +226,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Movement: {fileID: 114677730453914824}
+--- !u!114 &114642157933146850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368403752600402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365a2409253848c3871664f7708c0a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Movement: {fileID: 114677730453914824, guid: 04ac26a149bf7ad42b3661782ee5fe0a,
+    type: 2}
 --- !u!114 &114677730453914824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,7 +308,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368403752600402}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7447b53a037646e4a763cd81f4d1bce7, type: 3}
   m_Name: 
