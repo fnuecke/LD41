@@ -13,11 +13,14 @@ namespace MightyPirates
                 return;
 
             Weapon loot = LootTable.GetLoot();
-            if (loot != null)
-            {
-                GameObject drop = ObjectPool.Get(LootTable.DropPrefab, transform.position, Quaternion.identity);
-                drop.GetComponent<Pickup>().Value = loot;
-            }
+            if (loot == null)
+                return;
+
+            GameObject drop = ObjectPool.Get(LootTable.DropPrefab, transform.position, Quaternion.identity);
+            if (drop == null)
+                return;
+
+            drop.GetComponent<Pickup>().Value = loot;
         }
     }
 }

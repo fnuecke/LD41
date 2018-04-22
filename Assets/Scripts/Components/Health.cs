@@ -13,6 +13,7 @@ namespace MightyPirates
         private int m_CurrentHealth;
 
         public int CurrentHealth => m_CurrentHealth;
+        public int MaxHealth => m_MaxHealth;
 
         public event Action<GameObject> DamageTaken;
         public event Action<GameObject> Died;

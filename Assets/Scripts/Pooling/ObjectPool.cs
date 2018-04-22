@@ -13,6 +13,8 @@ namespace MightyPirates
                 return null;
 
             Transform pool = GetPool(prefab);
+            if (pool == null) // application exiting -> destroyed this frame
+                return null;
             if (pool.childCount == 0)
             {
                 GameObject instance = Object.Instantiate(prefab, position, rotation, parent);
