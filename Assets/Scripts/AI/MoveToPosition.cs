@@ -38,6 +38,7 @@ namespace MightyPirates
             Vector2 toTarget = targetPosition - myPosition;
 
             m_Movement.AddAcceleration(toTarget);
+            m_Movement.AddLookAt(m_Target.Value);
         }
     }
 }
