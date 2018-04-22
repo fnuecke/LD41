@@ -292,7 +292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DamagePrefab: {fileID: 1223454738467390, guid: 42bdfc4dba339b5448ac4535cd450f04,
     type: 2}
-  m_DeathPrefab: {fileID: 0}
+  m_DeathPrefab: {fileID: 1724616451492828, guid: ab27e2130c933974c97d10c3e167a4e7,
+    type: 2}
 --- !u!114 &114677730453914824
 MonoBehaviour:
   m_ObjectHideFlags: 1

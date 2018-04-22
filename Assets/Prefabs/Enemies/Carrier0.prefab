@@ -535,7 +535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DamagePrefab: {fileID: 1223454738467390, guid: 42bdfc4dba339b5448ac4535cd450f04,
     type: 2}
-  m_DeathPrefab: {fileID: 0}
+  m_DeathPrefab: {fileID: 1185250617012952, guid: e98105e59324c4d48b964f69b6320332,
+    type: 2}
 --- !u!212 &212000106994369918
 SpriteRenderer:
   m_ObjectHideFlags: 1
