@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 114753152398455500}
   - component: {fileID: 114724950296972424}
   - component: {fileID: 114085064564449820}
+  - component: {fileID: 114284068495624178}
   m_Layer: 10
   m_Name: EnemyRanged
   m_TagString: Untagged
@@ -278,6 +279,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2817f3c80c554511b399b0dd1e178977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114284068495624178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a773f981fc0e4b369628b53c145aafe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DamagePrefab: {fileID: 1223454738467390, guid: 42bdfc4dba339b5448ac4535cd450f04,
+    type: 2}
+  m_DeathPrefab: {fileID: 0}
 --- !u!114 &114338292799050892
 MonoBehaviour:
   m_ObjectHideFlags: 1

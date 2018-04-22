@@ -3,13 +3,13 @@
 namespace MightyPirates
 {
     [RequireComponent(typeof(Health))]
-    public sealed class HealthBasedSounds : MonoBehaviour
+    public sealed class HealthBasedParticles : MonoBehaviour
     {
         [SerializeField]
-        private Sounds.SoundType m_DamageSound = Sounds.SoundType.TakeDamage;
+        private GameObject m_DamagePrefab;
 
         [SerializeField]
-        private Sounds.SoundType m_DeathSound = Sounds.SoundType.SmallDeath;
+        private GameObject m_DeathPrefab;
 
         private Health m_Health;
 
@@ -35,12 +35,12 @@ namespace MightyPirates
 
         private void HandleDamageTaken(GameObject obj)
         {
-            Sounds.Play(m_DamageSound, 0.8f);
+            ObjectPool.Get(m_DamagePrefab, transform.position, Quaternion.identity);
         }
 
         private void HandleDied(GameObject obj)
         {
-            Sounds.Play(m_DeathSound);
+            ObjectPool.Get(m_DeathPrefab, transform.position, Quaternion.identity);
         }
     }
 }

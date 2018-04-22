@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114944785981263068}
   - component: {fileID: 114151884453024090}
   - component: {fileID: 114672648688320032}
+  - component: {fileID: 114720992364273548}
   m_Layer: 10
   m_Name: Carrier1
   m_TagString: Untagged
@@ -492,6 +493,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ScanRadius: 16
   m_ScanInterval: 1
+--- !u!114 &114720992364273548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152769955764728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a773f981fc0e4b369628b53c145aafe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DamagePrefab: {fileID: 1223454738467390, guid: 42bdfc4dba339b5448ac4535cd450f04,
+    type: 2}
+  m_DeathPrefab: {fileID: 0}
 --- !u!114 &114852643139681990
 MonoBehaviour:
   m_ObjectHideFlags: 1

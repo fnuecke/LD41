@@ -9,6 +9,9 @@ namespace MightyPirates
 
         public static GameObject Get(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null)
         {
+            if (prefab == null)
+                return null;
+
             Transform pool = GetPool(prefab);
             if (pool.childCount == 0)
             {
