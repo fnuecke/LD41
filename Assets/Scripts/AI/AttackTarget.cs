@@ -7,7 +7,7 @@ namespace MightyPirates
     public sealed class AttackTarget : TargetTrackingBehaviour
     {
         [SerializeField]
-        private Weapon m_Weapon;
+        private WeaponSlot[] m_WeaponSlots;
 
         private float m_Radius;
 
@@ -27,25 +27,25 @@ namespace MightyPirates
 
         private void TryAttackTarget()
         {
-            Vector2 toTarget = m_TargetTracker.Target.transform.position - m_Weapon.transform.position;
-            float angleDelta = Vector2.Angle(toTarget, m_Weapon.transform.up);
-            if (angleDelta > 30)
+            if (m_WeaponSlots == null || m_WeaponSlots.Length == 0)
                 return;
 
-            float distance = Vector2.Distance(m_TargetTracker.Target.transform.position, m_Weapon.transform.position);
-            if (distance - m_Radius - m_TargetTracker.TargetRadius > m_Weapon.Range)
-                return;
+            foreach (WeaponSlot weaponSlot in m_WeaponSlots)
+            {
+                if (!weaponSlot.HasWeapon)
+                    continue;
 
-            m_Weapon.TryShoot();
-        }
+                Vector2 toTarget = m_TargetTracker.Target.transform.position - weaponSlot.transform.position;
+                float angleDelta = Vector2.Angle(toTarget, weaponSlot.transform.up);
+                if (angleDelta > 30)
+                    continue;
 
-        private void OnDrawGizmos()
-        {
-            if (m_Weapon == null)
-                return;
+                float distance = Vector2.Distance(m_TargetTracker.Target.transform.position, weaponSlot.transform.position);
+                if (distance - m_Radius - m_TargetTracker.TargetRadius > weaponSlot.Range)
+                    continue;
 
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(m_Weapon.transform.position, m_Weapon.transform.up);
+                weaponSlot.TryShoot();
+            }
         }
     }
 }

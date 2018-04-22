@@ -98,6 +98,16 @@ namespace MightyPirates
             }
         }
 
+        public static bool IsPlayer(int layer)
+        {
+            return ((1 << layer) & PlayerMask) != 0;
+        }
+
+        public static bool IsEnemy(int layer)
+        {
+            return ((1 << layer) & EnemyMask) != 0;
+        }
+
         private static void Initialize()
         {
             if (s_IsInitialized) return;

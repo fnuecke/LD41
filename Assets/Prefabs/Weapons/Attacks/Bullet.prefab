@@ -20,13 +20,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4733480259532290}
   - component: {fileID: 212269049390843912}
-  - component: {fileID: 114865308951992824}
-  - component: {fileID: 114232114102681050}
-  - component: {fileID: 58084158072557352}
-  - component: {fileID: 114395247762890138}
   - component: {fileID: 50521976082051586}
-  m_Layer: 12
-  m_Name: EnemyBullet
+  - component: {fileID: 58084158072557352}
+  - component: {fileID: 114232114102681050}
+  - component: {fileID: 114865308951992824}
+  - component: {fileID: 114395247762890138}
+  m_Layer: 0
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214ea498c32c474882b10e59f1a82a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 10
+  m_Speed: 15
 --- !u!114 &114395247762890138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0bec602e7a43efb2eb7581249a7236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Damage: 5
+  m_Damage: 10
   m_Once: 1
 --- !u!114 &114865308951992824
 MonoBehaviour:
@@ -148,11 +148,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1037924113
-  m_SortingLayer: 6
+  m_SortingLayerID: -1425132905
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 38830ebe14aff4f4b896c6aa0e480b27, type: 3}
-  m_Color: {r: 0.89705884, g: 0.37597317, b: 0.37597317, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

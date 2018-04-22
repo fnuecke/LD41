@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4886824949025020}
-  - component: {fileID: 114558110874620372}
+  - component: {fileID: 114685274499993068}
   m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
@@ -188,7 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6921ec70ea4221b70032430a92e266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weapon: {fileID: 114558110874620372}
+  m_WeaponSlots:
+  - {fileID: 114685274499993068}
 --- !u!114 &114367540091139932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,20 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4ed14332734fa292f6a495c229a53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114558110874620372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1123561583457298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49bac8e45b4a4727b608aef14c41914f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 1991692795272734, guid: 03a5f6bed0dc59b41a23f33dd7ab8538, type: 2}
-  m_Frequency: 0.2
-  m_Range: 1
 --- !u!114 &114579362831293808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,6 +261,18 @@ MonoBehaviour:
   m_Body: {fileID: 50797784299300402}
   m_MoveSpeed: 10
   m_TurnSpeed: 5
+--- !u!114 &114685274499993068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123561583457298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6739e6eb552a456594e216fbf5b014d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weapon: {fileID: 11400000, guid: 3be0bcadd7eaf324f98dd2b86d9fbe7b, type: 2}
 --- !u!114 &114725495455467984
 MonoBehaviour:
   m_ObjectHideFlags: 1

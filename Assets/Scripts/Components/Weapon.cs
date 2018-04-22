@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace MightyPirates
 {
-    public sealed class Weapon : MonoBehaviour
+    [CreateAssetMenu]
+    public sealed class Weapon : ScriptableObject
     {
         [SerializeField]
         private GameObject m_Prefab;
@@ -14,21 +15,25 @@ namespace MightyPirates
         [SerializeField]
         private float m_Range;
 
-        private float m_TimeLastAttacked;
         private readonly List<ISpawnListener> m_SpawnListeners = new List<ISpawnListener>();
 
         public float Range => m_Range;
 
-        public void TryShoot()
+        public void TryShoot(WeaponSlot slot, ref float timeLastAttacked)
         {
-            if (Time.time - m_TimeLastAttacked < m_Frequency) return;
+            if (Time.time - timeLastAttacked < m_Frequency) return;
 
-            m_TimeLastAttacked = Time.time;
-            GameObject attack = ObjectPool.Get(m_Prefab, transform.position, transform.rotation);
+            timeLastAttacked = Time.time;
+            GameObject attack = ObjectPool.Get(m_Prefab, slot.transform.position, slot.transform.rotation);
+            attack.layer = Layers.IsEnemy(slot.gameObject.layer) ? Layers.EnemyShots : Layers.PlayerShots;
             attack.GetComponents(m_SpawnListeners);
-            foreach (ISpawnListener listener in m_SpawnListeners)
+            if (m_SpawnListeners.Count > 0)
             {
-                listener.HandleSpawned(GetComponentInParent<Entity>().gameObject);
+                GameObject spawner = slot.GetComponentInParent<Entity>().gameObject;
+                foreach (ISpawnListener listener in m_SpawnListeners)
+                {
+                    listener.HandleSpawned(spawner);
+                }
             }
             m_SpawnListeners.Clear();
         }

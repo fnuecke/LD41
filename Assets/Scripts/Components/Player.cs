@@ -8,7 +8,7 @@ public sealed class Player : MonoBehaviour
     private Movement m_Movement;
 
     [SerializeField]
-    private Weapon m_Weapon;
+    private WeaponSlot[] m_WeaponSlots;
 
     [SerializeField]
     private float m_DodgeStrength = 5;
@@ -60,7 +60,8 @@ public sealed class Player : MonoBehaviour
     {
         if (!Input.GetButton(m_FireInputButton))
             return;
-        m_Weapon.TryShoot();
+        foreach (WeaponSlot weaponSlot in m_WeaponSlots)
+            weaponSlot.TryShoot();
     }
 
     private void HandleCommands()

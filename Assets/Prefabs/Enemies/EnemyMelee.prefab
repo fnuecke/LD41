@@ -78,7 +78,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4049982002912236}
-  - component: {fileID: 114302275658173478}
+  - component: {fileID: 114587424099268160}
   m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
@@ -202,21 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6921ec70ea4221b70032430a92e266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weapon: {fileID: 114302275658173478}
---- !u!114 &114302275658173478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1917468387301602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49bac8e45b4a4727b608aef14c41914f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 1051116037681942, guid: 23346a53c21310c4fa3b92b6783b91b3, type: 2}
-  m_Frequency: 0.2
-  m_Range: 1
+  m_WeaponSlots:
+  - {fileID: 114587424099268160}
 --- !u!114 &114338292799050892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,6 +241,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ScanRadius: 10
   m_ScanInterval: 0.2
+--- !u!114 &114587424099268160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1917468387301602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6739e6eb552a456594e216fbf5b014d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weapon: {fileID: 11400000, guid: 3be0bcadd7eaf324f98dd2b86d9fbe7b, type: 2}
 --- !u!114 &114627473349850236
 MonoBehaviour:
   m_ObjectHideFlags: 1
