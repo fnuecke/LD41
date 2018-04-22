@@ -13,7 +13,6 @@ namespace MightyPirates
             if (pool.childCount == 0)
             {
                 GameObject instance = Object.Instantiate(prefab, position, rotation, parent);
-                Object.DontDestroyOnLoad(instance);
                 instance.GetOrAddComponent<PooledObject>().Prefab = prefab;
                 instance.SetActive(true);
                 return instance;

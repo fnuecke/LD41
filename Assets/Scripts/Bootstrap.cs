@@ -14,6 +14,12 @@ namespace MightyPirates
         private TileTerrain m_Terrain;
 
         [SerializeField]
+        private RenderTexture m_Minimap;
+
+        [SerializeField]
+        private Color m_ColorOpen = Color.white, m_ColorRock = Color.black;
+
+        [SerializeField]
         private GameObject m_PlayerPrefab;
 
         [SerializeField]
@@ -130,6 +136,28 @@ namespace MightyPirates
                 }
 
                 break;
+            }
+
+            Vector3Int tilemapSize = m_Terrain.Tilemap.size;
+            Texture2D minimap = new Texture2D(tilemapSize.x, tilemapSize.y, TextureFormat.ARGB32, false, true);
+            minimap.filterMode = FilterMode.Point;
+            try
+            {
+                for (int x = 0; x < tilemapSize.x; x++)
+                {
+                    for (int y = 0; y < tilemapSize.y; y++)
+                    {
+                        Color color = m_Terrain.Tilemap.GetColliderType(new Vector3Int(x, y, 0)) == Tile.ColliderType.None ? m_ColorOpen : m_ColorRock;
+                        minimap.SetPixel(x, y, color);
+                    }
+                }
+
+                minimap.Apply();
+                Graphics.Blit(minimap, m_Minimap);
+            }
+            finally
+            {
+                Destroy(minimap);
             }
 
             Vector3 cellSize = m_Terrain.Tilemap.cellSize;
