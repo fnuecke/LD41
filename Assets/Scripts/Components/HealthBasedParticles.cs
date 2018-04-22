@@ -33,12 +33,12 @@ namespace MightyPirates
             m_Health.Died -= HandleDied;
         }
 
-        private void HandleDamageTaken(GameObject obj)
+        private void HandleDamageTaken(GameObject source)
         {
             ObjectPool.Get(m_DamagePrefab, transform.position, Quaternion.identity);
         }
 
-        private void HandleDied(GameObject obj)
+        private void HandleDied(GameObject source)
         {
             ObjectPool.Get(m_DeathPrefab, transform.position, Quaternion.identity);
         }

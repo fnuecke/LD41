@@ -33,12 +33,12 @@ namespace MightyPirates
             m_Health.Died -= HandleDied;
         }
 
-        private void HandleDamageTaken(GameObject obj)
+        private void HandleDamageTaken(GameObject source)
         {
             Sounds.Play(m_DamageSound, 0.8f);
         }
 
-        private void HandleDied(GameObject obj)
+        private void HandleDied(GameObject source)
         {
             Sounds.Play(m_DeathSound);
         }
