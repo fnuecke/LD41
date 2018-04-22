@@ -29,6 +29,14 @@ namespace MightyPirates
         private readonly List<ISpawnListener> m_SpawnListeners = new List<ISpawnListener>();
         private int m_NextSpawnIndex;
 
+        public int MaxAlive
+        {
+            get { return m_MaxAlive; }
+            set { m_MaxAlive = value; }
+        }
+
+        public int Alive => m_LiveChildren.Count; // Not live (there may be dead entries) but updated via spawn often enough.
+
         private void OnEnable()
         {
             m_Coroutine = StartCoroutine(SpawnPeriodically());
@@ -83,7 +91,7 @@ namespace MightyPirates
                 }
             }
 
-            int spawnCount = Mathf.Min(Random.Range(m_SpawnMin, m_SpawnMax + 1), m_MaxAlive - liveCount);
+            int spawnCount = Mathf.Min(Random.Range(m_SpawnMin, m_SpawnMax + 1), MaxAlive - liveCount);
             for (int i = 0; i < spawnCount; i++)
             {
                 Vector3 position;
