@@ -4,11 +4,23 @@ namespace MightyPirates
 {
     public sealed class PlayerCamera : MonoBehaviour
     {
+        public static AudioSource GlobalAudioSource => s_Instance.m_AudioSource;
+
+        private static PlayerCamera s_Instance;
+
+        private AudioSource m_AudioSource;
         private PooledObjectReference m_Player;
 
         private void OnEnable()
         {
             m_Player = new PooledObjectReference(GameObject.FindGameObjectWithTag("Player"));
+            s_Instance = this;
+            m_AudioSource = this.GetOrAddComponent<AudioSource>();
+        }
+
+        private void OnDisable()
+        {
+            s_Instance = null;
         }
 
         private void Update()

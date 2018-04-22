@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114094651365124688}
   - component: {fileID: 114448193820876588}
   - component: {fileID: 114096274365844740}
+  - component: {fileID: 114324492379066152}
   m_Layer: 10
   m_Name: Carrier0
   m_TagString: Untagged
@@ -402,6 +403,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 300
+--- !u!114 &114324492379066152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041054122136236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6b57a378ad488aaad8b81d330cb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DamageSound: 4
+  m_DeathSound: 6
 --- !u!114 &114398537780698686
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 114934139805640068}
   - component: {fileID: 114250157567048406}
   - component: {fileID: 114579362831293808}
+  - component: {fileID: 114652782411180264}
   m_Layer: 9
   m_Name: MinionRanged
   m_TagString: Untagged
@@ -237,6 +238,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Movement: {fileID: 114677730453914824}
+--- !u!114 &114652782411180264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368403752600402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6b57a378ad488aaad8b81d330cb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DamageSound: 4
+  m_DeathSound: 5
 --- !u!114 &114677730453914824
 MonoBehaviour:
   m_ObjectHideFlags: 1

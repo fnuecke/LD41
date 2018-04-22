@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489f866f6190441bb4293152afffc2ff, type: 3}
+  m_Name: SoundLibrary
+  m_EditorClassIdentifier: 
+  m_MeleeAttackSounds:
+  - {fileID: 8300000, guid: 1910248975790474fae065d81b2de70e, type: 3}
+  - {fileID: 8300000, guid: e45ee40c4e9b96a48b65b968c8050c74, type: 3}
+  - {fileID: 8300000, guid: 7bc13a326204c874cbb8e87cb977df59, type: 3}
+  - {fileID: 8300000, guid: eb1ee3bd0a277c84fbf15e3cda6615ab, type: 3}
+  - {fileID: 8300000, guid: acb4db57c968971489efad43322d029d, type: 3}
+  - {fileID: 8300000, guid: 2c67cb3fc3dd0f44c8981d9600b4212b, type: 3}
+  - {fileID: 8300000, guid: 814558d0690267544817e020486221c8, type: 3}
+  m_GunAttackSounds:
+  - {fileID: 8300000, guid: 72ba43aef7a77ed4a8e38a63ab05e603, type: 3}
+  - {fileID: 8300000, guid: b9b485a4d78505f4e8689f6e0ca6d8fb, type: 3}
+  - {fileID: 8300000, guid: 034712cd223768e48a97fb4a6077063d, type: 3}
+  - {fileID: 8300000, guid: 504938b7414060940832c0cc7cf0e195, type: 3}
+  - {fileID: 8300000, guid: ba2945ff43704f644a553071e1e625ba, type: 3}
+  - {fileID: 8300000, guid: 8142b1d00be20cb44ba15413e4e04f9e, type: 3}
+  - {fileID: 8300000, guid: fe35b5346828ed448ad52f383da45817, type: 3}
+  - {fileID: 8300000, guid: a156943449f548a448ac7134c0d9431d, type: 3}
+  m_LaserAttackSounds:
+  - {fileID: 8300000, guid: 38cb64a658c69714d8e456e32118f094, type: 3}
+  - {fileID: 8300000, guid: 7837bb880f244224f8679cfe3d5aeb60, type: 3}
+  - {fileID: 8300000, guid: 7ce94595945130f4782d0df496fff750, type: 3}
+  - {fileID: 8300000, guid: a3066cbeaf46e7a4ab3a6b40fd57ce19, type: 3}
+  - {fileID: 8300000, guid: 1fe4262c1c8175f4a88ffdb867be9e23, type: 3}
+  - {fileID: 8300000, guid: 8b866ed113675c14cae9b9078abfa965, type: 3}
+  m_TakeDamageSounds:
+  - {fileID: 8300000, guid: a8db44d72180b214aa31aee76a25bc43, type: 3}
+  - {fileID: 8300000, guid: 77773d45b5b6b9c4ab159363cce148a2, type: 3}
+  - {fileID: 8300000, guid: 6c197043325f0af4a99e5401d754f71b, type: 3}
+  - {fileID: 8300000, guid: 7e3e4b318cfe65b42986077c346f827f, type: 3}
+  - {fileID: 8300000, guid: 45262ec05785e2042bae0852bd76d712, type: 3}
+  - {fileID: 8300000, guid: 811598c9e1fe8704cb38c49b93ccea81, type: 3}
+  - {fileID: 8300000, guid: d44297bc5be7dfa4684f489a449107a4, type: 3}
+  - {fileID: 8300000, guid: 9c9e795380aafac4e86d771267a14ae1, type: 3}
+  - {fileID: 8300000, guid: cb77651d3cd0dd5488c17d81513299d3, type: 3}
+  m_SmallDeathSounds:
+  - {fileID: 8300000, guid: 98166fcbbdacfec45995952d43fa9db2, type: 3}
+  - {fileID: 8300000, guid: c6daca1e92453f641860d4d072432115, type: 3}
+  - {fileID: 8300000, guid: 1738245620c3b77439284c7b03a74f26, type: 3}
+  m_LargeDeathSounds:
+  - {fileID: 8300000, guid: 3745b7cf34ab2874b8b28991df71878a, type: 3}
+  - {fileID: 8300000, guid: 3b86b6a8fd0b4c141843b9741e7fb502, type: 3}

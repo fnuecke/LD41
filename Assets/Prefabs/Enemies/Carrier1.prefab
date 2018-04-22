@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114378387431034898}
   - component: {fileID: 114713466002108384}
   - component: {fileID: 114944785981263068}
+  - component: {fileID: 114151884453024090}
   m_Layer: 10
   m_Name: Carrier1
   m_TagString: Untagged
@@ -381,6 +382,19 @@ MonoBehaviour:
   m_SpawnMax: 1
   m_SpawnRadius: 3
   m_MaxAlive: 12
+--- !u!114 &114151884453024090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152769955764728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6b57a378ad488aaad8b81d330cb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DamageSound: 4
+  m_DeathSound: 6
 --- !u!114 &114160357369533256
 MonoBehaviour:
   m_ObjectHideFlags: 1

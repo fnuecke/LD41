@@ -15,13 +15,18 @@ namespace MightyPirates
         [SerializeField]
         private float m_Range;
 
+        [SerializeField]
+        private Sounds.SoundType m_SoundType;
+
         private readonly List<ISpawnListener> m_SpawnListeners = new List<ISpawnListener>();
 
         public float Range => m_Range;
+        public Sounds.SoundType SoundType => m_SoundType;
 
-        public void TryShoot(WeaponSlot slot, ref float timeLastAttacked)
+        public bool TryShoot(WeaponSlot slot, ref float timeLastAttacked)
         {
-            if (Time.time - timeLastAttacked < m_Frequency) return;
+            if (Time.time - timeLastAttacked < m_Frequency)
+                return false;
 
             timeLastAttacked = Time.time;
             GameObject attack = ObjectPool.Get(m_Prefab, slot.transform.position, slot.transform.rotation);
@@ -36,6 +41,8 @@ namespace MightyPirates
                 }
             }
             m_SpawnListeners.Clear();
+
+            return true;
         }
     }
 }

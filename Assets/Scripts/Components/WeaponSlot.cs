@@ -6,7 +6,7 @@ namespace MightyPirates
     {
         [SerializeField]
         private Weapon m_Weapon;
-        
+
         private float m_TimeLastAttacked;
 
         public bool HasWeapon => m_Weapon != null;
@@ -17,7 +17,10 @@ namespace MightyPirates
         {
             if (m_Weapon != null)
             {
-                m_Weapon.TryShoot(this, ref m_TimeLastAttacked);
+                if (m_Weapon.TryShoot(this, ref m_TimeLastAttacked))
+                {
+                    Sounds.Play(m_Weapon.SoundType, 0.5f);
+                }
             }
         }
 
