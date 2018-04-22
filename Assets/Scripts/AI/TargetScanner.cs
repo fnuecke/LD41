@@ -31,7 +31,7 @@ namespace MightyPirates
         {
             if (m_TargetTracker.Target == null && m_ScanRadius > 0 && Time.time - m_LastScanTime > m_ScanInterval)
             {
-                m_LastScanTime = Time.time;
+                m_LastScanTime = Time.time + Random.value * m_ScanInterval * 0.1f;
                 m_TargetTracker.Target = ScanForTarget();
             }
         }
