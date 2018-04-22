@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1178098497014188}
   m_IsPrefabParent: 1
+--- !u!1 &1114260878452908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4914254388688928}
+  - component: {fileID: 114970622422759092}
+  m_Layer: 10
+  m_Name: Weapon Slot Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1178098497014188
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +96,7 @@ GameObject:
   - component: {fileID: 4049982002912236}
   - component: {fileID: 114384425575234456}
   m_Layer: 10
-  m_Name: Weapon
+  m_Name: Weapon Slot Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,11 +109,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1917468387301602}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.3, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.02, y: -0.15, z: 0}
+  m_LocalScale: {x: 1.0000005, y: 1.0000005, z: 1}
   m_Children: []
   m_Father: {fileID: 4674831619486464}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!4 &4467667207538956
 Transform:
@@ -110,7 +126,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4674831619486464}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4674831619486464
 Transform:
@@ -123,6 +139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4698947355538578}
+  - {fileID: 4914254388688928}
   - {fileID: 4049982002912236}
   - {fileID: 4467667207538956}
   m_Father: {fileID: 0}
@@ -134,13 +151,26 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211442156797638}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4674831619486464}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!4 &4914254388688928
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114260878452908}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.02, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4674831619486464}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!50 &50582707578354514
 Rigidbody2D:
   serializedVersion: 4
@@ -203,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_WeaponSlots:
+  - {fileID: 114970622422759092}
   - {fileID: 114384425575234456}
 --- !u!114 &114338292799050892
 MonoBehaviour:
@@ -322,6 +353,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb13f024cf24546a03d813c8ee96c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114970622422759092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114260878452908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6739e6eb552a456594e216fbf5b014d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weapon: {fileID: 11400000, guid: b37c6d22edb98ec4c9e928657d063a3f, type: 2}
 --- !u!114 &114978459799754324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,7 +412,7 @@ SpriteRenderer:
   m_SortingLayerID: -2085748531
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d658840e87e696448e86ecd09ac8228, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31f38c8ee4bea924f8ec420d86cf7b99, type: 3}
   m_Color: {r: 0.8897059, g: 0.294388, b: 0.294388, a: 1}
   m_FlipX: 0
   m_FlipY: 0
