@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bac8e45b4a4727b608aef14c41914f, type: 3}
   m_Name: Laser
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 0}
-  m_Frequency: 0.1
-  m_Range: 0
-  m_AttackAngle: 30
-  m_SoundType: 0
+  m_Prefab: {fileID: 1671517438202498, guid: f62fa34e2af15fc44bf89c45c28ae2d7, type: 2}
+  m_Frequency: 1
+  m_Range: 10
+  m_AttackAngle: 10
+  m_SoundType: 3

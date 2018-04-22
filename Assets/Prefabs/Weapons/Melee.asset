@@ -14,4 +14,5 @@ MonoBehaviour:
   m_Prefab: {fileID: 1991692795272734, guid: 03a5f6bed0dc59b41a23f33dd7ab8538, type: 2}
   m_Frequency: 0.1
   m_Range: 0.5
+  m_AttackAngle: 360
   m_SoundType: 1

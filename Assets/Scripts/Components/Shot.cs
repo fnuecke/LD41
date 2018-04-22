@@ -20,7 +20,7 @@ namespace MightyPirates
                 m_SpriteRenderer.sortingLayerID = isEnemy ? SortingLayers.EnemyShots : SortingLayers.PlayerShots;
                 m_SpriteRenderer.color = isEnemy ? m_EnemyColor : m_PlayerColor;
             }
-            gameObject.layer = isEnemy ? Layers.EnemyShots : Layers.PlayerShots;
+            gameObject.SetLayerRecursive(isEnemy ? Layers.EnemyShots : Layers.PlayerShots);
         }
     }
 }

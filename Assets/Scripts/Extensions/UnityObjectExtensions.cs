@@ -16,6 +16,18 @@ namespace MightyPirates
             return component.gameObject.GetOrAddComponent<T>();
         }
 
+        public static void SetLayerRecursive(this GameObject self, int layer)
+        {
+            self.transform.SetLayerRecursive(layer);
+        }
+
+        public static void SetLayerRecursive(this Transform self, int layer)
+        {
+            self.gameObject.layer = layer;
+            for (int i = 0; i < self.childCount; i++)
+                SetLayerRecursive(self.GetChild(i), layer);
+        }
+
         public static void Free(this GameObject gameObject)
         {
             PooledObject pooledObject = gameObject.GetComponent<PooledObject>();
