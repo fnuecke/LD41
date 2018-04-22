@@ -7,6 +7,9 @@ namespace MightyPirates
         [SerializeField]
         private Weapon m_Weapon;
 
+        [SerializeField]
+        private SpriteRenderer m_Visualization;
+
         private float m_TimeLastAttacked;
 
         public bool HasWeapon => m_Weapon != null;
@@ -17,7 +20,14 @@ namespace MightyPirates
         public Weapon Weapon
         {
             get { return m_Weapon; }
-            set { m_Weapon = value; }
+            set
+            {
+                m_Weapon = value;
+                if (m_Visualization != null)
+                {
+                    m_Visualization.sprite = m_Weapon != null ? m_Weapon.Sprite : null;
+                }
+            }
         }
 
         public void TryShoot()
@@ -28,6 +38,14 @@ namespace MightyPirates
                 {
                     Sounds.Play(m_Weapon.SoundType, 0.5f);
                 }
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (m_Visualization != null)
+            {
+                m_Visualization.sprite = m_Weapon != null ? m_Weapon.Sprite : null;
             }
         }
 

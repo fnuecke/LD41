@@ -65,7 +65,7 @@ namespace MightyPirates.UI
                     }
                     else
                     {
-                        m_EquipmentImage[i].overrideSprite = pickup.Sprite;
+                        m_EquipmentImage[i].overrideSprite = weapon.Sprite;
                         m_EquipmentTitle[i].text = weapon.Title;
                         m_EquipmentDescription[i].text = weapon.Description;
 
