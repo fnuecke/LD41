@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 
 namespace MightyPirates
 {
+    [DefaultExecutionOrder((int) ExectionOrders.TileTerrain)]
     [RequireComponent(typeof(Tilemap))]
     public sealed class TileTerrain : MonoBehaviour
     {

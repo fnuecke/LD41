@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace MightyPirates.UI
 {
+    [DefaultExecutionOrder((int) ExectionOrders.Minimap)]
     public sealed class Minimap : MonoBehaviour
     {
         public static void Add(MinimapIcon minimapIcon)

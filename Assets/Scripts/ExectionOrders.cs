@@ -6,5 +6,7 @@
         GoalManager,
         Goal,
         GoalsUi,
+        TileTerrain,
+        Minimap,
     }
 }
