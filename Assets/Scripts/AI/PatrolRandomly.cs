@@ -96,10 +96,11 @@ namespace MightyPirates
 
         private bool FindLegalPosition(out Vector3 position)
         {
+            Tilemap tilemap = TileTerrain.Instance.Tilemap;
             for (int j = 0; j < 20; j++)
             {
                 position = (Vector2) transform.position + Random.insideUnitCircle * m_Radius;
-                if (TileTerrain.Instance.IsLegalPosition(position))
+                if (TileTerrain.Instance.IsLegalPosition(position) && Pathfinding.FindPath(tilemap, transform.position.ToVector2Int(tilemap.cellSize), position.ToVector2Int(tilemap.cellSize)) != null)
                     return true;
             }
 
