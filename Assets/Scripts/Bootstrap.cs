@@ -56,6 +56,7 @@ namespace MightyPirates
         {
             if (GoalManager.GetGoalNames().Count == 0)
             {
+                GameOver.AddLevelSurvived(1);
                 StartCoroutine(FadeInLoadingScreen());
             }
         }

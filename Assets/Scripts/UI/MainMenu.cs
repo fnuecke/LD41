@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MightyPirates.UI
+namespace MightyPirates
 {
     public sealed class MainMenu : MonoBehaviour
     {

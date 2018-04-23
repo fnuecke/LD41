@@ -1,5 +1,4 @@
-﻿using MightyPirates.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MightyPirates
 {

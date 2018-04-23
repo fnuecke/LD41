@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
-namespace MightyPirates.UI
+namespace MightyPirates
 {
     [DefaultExecutionOrder((int) ExectionOrders.Minimap)]
     public sealed class Minimap : MonoBehaviour

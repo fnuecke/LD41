@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using MightyPirates;
-using MightyPirates.UI;
 using UnityEngine;
 
 [DisallowMultipleComponent]

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MightyPirates.UI
+namespace MightyPirates
 {
     [DefaultExecutionOrder((int) ExectionOrders.GoalsUi)]
     public sealed class UiGoals : MonoBehaviour

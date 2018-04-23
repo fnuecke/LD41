@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MightyPirates.UI
+namespace MightyPirates
 {
     public sealed class MinimapIcon : MonoBehaviour
     {

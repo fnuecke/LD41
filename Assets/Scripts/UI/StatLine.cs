@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace MightyPirates.UI
+namespace MightyPirates
 {
     public sealed class StatLine : MonoBehaviour
     {

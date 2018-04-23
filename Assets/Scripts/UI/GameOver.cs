@@ -4,10 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MightyPirates.UI
+namespace MightyPirates
 {
     public sealed class GameOver : MonoBehaviour
     {
+        public static void AddLevelSurvived(int value)
+        {
+            s_Instance.m_LevelsSurvived += value;
+        }
+
         public static void AddDamageDealt(int value)
         {
             s_Instance.m_DamageDealt += value;
@@ -47,6 +52,7 @@ namespace MightyPirates.UI
         [SerializeField]
         private Image m_Curtain;
 
+        private long m_LevelsSurvived;
         private long m_DamageDealt;
         private long m_DamageTaken;
         private long m_MinionDamageTaken;
@@ -70,6 +76,7 @@ namespace MightyPirates.UI
 
         private void ShowStatsInternal()
         {
+            AddStatLine("Levels survived", m_LevelsSurvived.ToString());
             AddStatLine("Enemies killed", m_EnemiesKilled.ToString());
             AddStatLine("Damage dealt", m_DamageDealt.ToString());
             AddStatLine("Damage taken", m_DamageTaken.ToString());
