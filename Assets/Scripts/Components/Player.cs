@@ -41,6 +41,7 @@ public sealed class Player : MonoBehaviour
     private string m_Equip3InputButton = "Equip3";
 
     private Camera m_Camera;
+    private PlayerCamera m_PlayerCamera;
     private readonly Collider2D[] m_PickupScanResults = new Collider2D[4];
     private Pickupable m_Pickupable;
 
@@ -70,7 +71,10 @@ public sealed class Player : MonoBehaviour
     private void Update()
     {
         if (m_Camera == null)
+        {
             m_Camera = Camera.main;
+            m_PlayerCamera = m_Camera.GetComponent<PlayerCamera>();
+        }
 
         HandleMovement();
         HandleDodging();
@@ -83,8 +87,9 @@ public sealed class Player : MonoBehaviour
 
     private void HandleDamageTaken(GameObject source, int amount)
     {
-        // TODO Screenshake or something? Screen flashing?
         GameOver.AddDamageTaken(amount);
+        if (m_PlayerCamera != null)
+            m_PlayerCamera.Shake();
     }
 
     private void HandleDied(GameObject obj)

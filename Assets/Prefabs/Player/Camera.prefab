@@ -96,3 +96,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b69bc2dc8f460b87ed6006d7d65238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ShakyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.15926747
+      value: -3.3734357
+      inSlope: 0.73730946
+      outSlope: 0.73730946
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.2810506
+      value: 4.6159983
+      inSlope: -0.17233193
+      outSlope: -0.17233193
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.4350081
+      value: -1.5067898
+      inSlope: 0.61035156
+      outSlope: 0.61035156
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.54638106
+      value: 0.98796237
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.62779045
+      value: -0.47317898
+      inSlope: -24.456978
+      outSlope: -24.456978
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.7072238
+      value: -0.47716308
+      inSlope: 15.431506
+      outSlope: 15.431506
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  m_ShakeSpeed: 2

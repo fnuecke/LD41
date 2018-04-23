@@ -2,15 +2,22 @@
 
 namespace MightyPirates
 {
-    [DefaultExecutionOrder((int)ExectionOrders.PlayerCamera)]
+    [DefaultExecutionOrder((int) ExectionOrders.PlayerCamera)]
     public sealed class PlayerCamera : MonoBehaviour
     {
         public static AudioSource GlobalAudioSource => s_Instance.m_AudioSource;
 
         private static PlayerCamera s_Instance;
 
+        [SerializeField]
+        private AnimationCurve m_ShakyCurve;
+
+        [SerializeField]
+        private float m_ShakeSpeed = 2;
+
         private AudioSource m_AudioSource;
         private PooledObjectReference m_Player;
+        private float m_ShakeOffset = 1;
 
         private void OnEnable()
         {
@@ -36,6 +43,29 @@ namespace MightyPirates
             cameraPosition.z = transform.position.z;
 
             transform.position = Vector3.Lerp(transform.position, cameraPosition, 5f * Time.deltaTime);
+
+            if (m_ShakeOffset < 1)
+            {
+                m_ShakeOffset += Time.deltaTime * m_ShakeSpeed;
+                float angle;
+                if (m_ShakeOffset >= 1)
+                {
+                    angle = 0;
+                }
+                else
+                {
+                    angle = m_ShakyCurve.Evaluate(m_ShakeOffset);
+                }
+                Vector3 angles = transform.rotation.eulerAngles;
+                angles.z = angle;
+                transform.rotation = Quaternion.Euler(angles);
+            }
+        }
+
+        [ContextMenu("Shake")]
+        public void Shake()
+        {
+            m_ShakeOffset = 0;
         }
     }
 }
