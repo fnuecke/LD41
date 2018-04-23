@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Prefabs:
   - {fileID: 1178098497014188, guid: 929f811625e24b341a4b809e6a0e6d51, type: 2}
   - {fileID: 1178098497014188, guid: ce80a467c008cbd4da56d777bc3452fa, type: 2}
+  - {fileID: 1183790690001574, guid: fabdcca380f21354a8a8da979a33c599, type: 2}
   m_SpawnInterval: 2
   m_SpawnMin: 1
   m_SpawnMax: 1
