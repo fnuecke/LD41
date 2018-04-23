@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 224111510036946688}
   - component: {fileID: 223934421584104966}
   - component: {fileID: 114078792979769100}
+  - component: {fileID: 114649942475690102}
   m_Layer: 8
   m_Name: Healthbar
   m_TagString: Untagged
@@ -603,6 +604,17 @@ MonoBehaviour:
   m_SpawnMax: 1
   m_SpawnRadius: 3
   m_MaxAlive: 16
+--- !u!114 &114649942475690102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704769403604708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d125b0b616340f0ace240422c7a4fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114758644681903022
 MonoBehaviour:
   m_ObjectHideFlags: 1

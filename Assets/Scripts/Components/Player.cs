@@ -269,17 +269,7 @@ public sealed class Player : MonoBehaviour
 
         Weapon weapon = m_WeaponSlots[equipSlot].Weapon;
         if (weapon == null)
-        {
-#if DEBUG
-            Pickupable loot = LootTable.GetLoot();
-            if (loot != null)
-            {
-                Pickup cheatedPickup = ObjectPool.Get(LootTable.DropPrefab, transform.position, Quaternion.identity).GetComponent<Pickup>();
-                cheatedPickup.Value = loot;
-            }
-#endif
             return;
-        }
 
         m_WeaponSlots[equipSlot].Weapon = null;
 
