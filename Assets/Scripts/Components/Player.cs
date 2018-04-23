@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MightyPirates;
+using MightyPirates.UI;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -81,14 +82,15 @@ public sealed class Player : MonoBehaviour
             HandleDrop();
     }
 
-    private void HandleDamageTaken(GameObject obj)
+    private void HandleDamageTaken(GameObject source, int amount)
     {
         // TODO Screenshake or something? Screen flashing?
+        GameOver.AddDamageTaken(amount);
     }
 
     private void HandleDied(GameObject obj)
     {
-        // TODO Scorescreen/Gameover.
+        GameOver.ShowStats();
     }
 
     private void HandleMovement()

@@ -22,7 +22,7 @@ namespace MightyPirates
 
         public static Pickupable GetLoot()
         {
-            return s_Instance.GetLootInternal();
+            return s_Instance != null ? s_Instance.GetLootInternal() : null;
         }
 
         private void OnEnable()

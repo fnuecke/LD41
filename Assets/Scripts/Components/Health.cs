@@ -29,7 +29,7 @@ namespace MightyPirates
             }
         }
 
-        public event Action<GameObject> DamageTaken;
+        public event Action<GameObject, int> DamageTaken;
         public event Action<GameObject> Died;
 
         private void OnEnable()
@@ -52,7 +52,7 @@ namespace MightyPirates
             }
             else
             {
-                OnDamageTaken(source);
+                OnDamageTaken(source, amount);
             }
         }
 
@@ -62,9 +62,9 @@ namespace MightyPirates
             this.FreeGameObject();
         }
 
-        private void OnDamageTaken(GameObject source)
+        private void OnDamageTaken(GameObject source, int amount)
         {
-            DamageTaken?.Invoke(source);
+            DamageTaken?.Invoke(source, amount);
         }
 
         private void OnDied(GameObject source)

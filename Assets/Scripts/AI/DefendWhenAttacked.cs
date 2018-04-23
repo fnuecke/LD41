@@ -93,7 +93,7 @@ namespace MightyPirates
             }
         }
 
-        private void HandleDamageTaken(GameObject source)
+        private void HandleDamageTaken(GameObject source, int amount)
         {
             if (m_TargetTracker.Target != null)
             {

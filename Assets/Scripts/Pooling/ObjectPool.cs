@@ -13,8 +13,6 @@ namespace MightyPirates
                 return null;
 
             Transform pool = GetPool(prefab);
-            if (pool == null) // application exiting -> destroyed this frame
-                return null;
             if (pool.childCount == 0)
             {
                 GameObject instance = Object.Instantiate(prefab, position, rotation, parent);
@@ -41,8 +39,9 @@ namespace MightyPirates
         private static Transform GetPool(GameObject prefab)
         {
             Transform pool;
-            if (!Pools.TryGetValue(prefab, out pool))
+            if (!Pools.TryGetValue(prefab, out pool) || pool == null) // null when destroyed from earlier scene
             {
+                Pools.Remove(prefab);
                 GameObject gameObject = new GameObject(prefab.name);
                 pool = gameObject.transform;
                 Pools.Add(prefab, pool);

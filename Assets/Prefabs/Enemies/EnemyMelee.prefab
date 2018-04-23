@@ -34,6 +34,7 @@ GameObject:
   - component: {fileID: 114395247513039798}
   - component: {fileID: 114989017772514388}
   - component: {fileID: 114006030863272490}
+  - component: {fileID: 114031502352736556}
   m_Layer: 10
   m_Name: EnemyMelee
   m_TagString: Untagged
@@ -240,6 +241,17 @@ MonoBehaviour:
     type: 2}
   m_DeathPrefab: {fileID: 1724616451492828, guid: ab27e2130c933974c97d10c3e167a4e7,
     type: 2}
+--- !u!114 &114031502352736556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178098497014188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b1084163ff4a3ba1ba6b23f23ebcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114039284967338600
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 114672648688320032}
   - component: {fileID: 114720992364273548}
   - component: {fileID: 114366781865957746}
+  - component: {fileID: 114670371546856294}
   m_Layer: 10
   m_Name: Carrier1
   m_TagString: Untagged
@@ -640,6 +641,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weapon: {fileID: 11400000, guid: b37c6d22edb98ec4c9e928657d063a3f, type: 2}
   m_Visualization: {fileID: 212835507884386896}
+--- !u!114 &114670371546856294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152769955764728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b1084163ff4a3ba1ba6b23f23ebcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114672648688320032
 MonoBehaviour:
   m_ObjectHideFlags: 1

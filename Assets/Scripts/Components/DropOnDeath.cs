@@ -2,12 +2,31 @@
 
 namespace MightyPirates
 {
-    public sealed class DropOnDisable : MonoBehaviour
+    [RequireComponent(typeof(Health))]
+    public sealed class DropOnDeath : MonoBehaviour
     {
         [SerializeField]
         private float m_Probability = 0.5f;
 
+        private void OnEnable()
+        {
+            Health health = GetComponent<Health>();
+            if (health != null)
+            {
+                health.Died += HandleDied;
+            }
+        }
+
         private void OnDisable()
+        {
+            Health health = GetComponent<Health>();
+            if (health != null)
+            {
+                health.Died -= HandleDied;
+            }
+        }
+
+        private void HandleDied(GameObject source)
         {
             if (Random.value > m_Probability)
                 return;
